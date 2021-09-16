@@ -1,3 +1,3 @@
 # CSE360Project
 
-Office Automation System for PediatricDoctor’s Office
+Office Automation System for Pediatric Doctor’s Office
