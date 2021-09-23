@@ -8,13 +8,11 @@
 <?import javafx.scene.text.Font?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-      prefWidth="600.0" xmlns="http://javafx.com/javafx/8">
+      prefWidth="600.0" xmlns="http://javafx.com/javafx/8" fx:controller="com.memeteam.cse360project.LoginController"
+      xmlns:fx="http://javafx.com/fxml">
     <MenuBar>
         <Menu mnemonicParsing="false" text="File">
-            <MenuItem mnemonicParsing="false" text="Close"/>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
-            <MenuItem mnemonicParsing="false" text="Delete"/>
+            <MenuItem mnemonicParsing="false" text="Exit Application"/>
         </Menu>
         <Menu mnemonicParsing="false" text="Help">
             <MenuItem mnemonicParsing="false" text="About"/>
@@ -51,7 +49,7 @@
             </GridPane.margin>
         </PasswordField>
         <Button defaultButton="true" mnemonicParsing="false" text="Register" GridPane.columnIndex="1"
-                GridPane.rowIndex="1">
+                GridPane.rowIndex="1" onAction="#onRegisterButtonClick">
             <GridPane.margin>
                 <Insets left="-80.0" top="120.0"/>
             </GridPane.margin>
@@ -61,7 +59,7 @@
                 <Insets left="10.0" top="120.0"/>
             </GridPane.margin>
         </Button>
-        <ImageView fitHeight="68.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true"
+        <ImageView fitHeight="70.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true"
                    GridPane.columnIndex="1">
             <GridPane.margin>
                 <Insets left="-140.0"/>
