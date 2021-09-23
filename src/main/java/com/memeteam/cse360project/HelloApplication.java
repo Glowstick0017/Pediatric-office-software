@@ -14,13 +14,13 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
 
         // load resources for scene
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
 
         // define scene
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
 
         // change scene title (toolbar title)
-        stage.setTitle("Hello!");
+        stage.setTitle("Meme Team Medical Software");
 
         // set window to always display above all other windows
         stage.setAlwaysOnTop(true);
