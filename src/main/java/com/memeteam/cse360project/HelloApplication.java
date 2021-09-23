@@ -17,7 +17,7 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
 
         // define scene
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        Scene scene = new Scene(fxmlLoader.load(), 500, 350);
 
         // change scene title (toolbar title)
         stage.setTitle("Meme Team Medical Software");
