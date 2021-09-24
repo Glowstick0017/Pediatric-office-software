@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="612.0"
+      prefWidth="515.0" xmlns="http://javafx.com/javafx/8">
+   <GridPane prefHeight="612.0" prefWidth="514.0">
+      <columnConstraints>
+         <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="253.0"/>
+         <ColumnConstraints hgrow="SOMETIMES" maxWidth="323.0" minWidth="10.0" prefWidth="262.0"/>
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+         <RowConstraints maxHeight="171.0" minHeight="10.0" prefHeight="122.0" vgrow="SOMETIMES"/>
+         <RowConstraints maxHeight="276.0" minHeight="10.0" prefHeight="276.0" vgrow="SOMETIMES"/>
+      </rowConstraints>
+      <ImageView fitHeight="38.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+         <GridPane.margin>
+            <Insets left="30.0" top="-70.0"/>
+         </GridPane.margin>
+         <Image url="@med.png"/>
+      </ImageView>
+      <Label text="Medical History">
+         <font>
+            <Font name="Arial Black" size="18.0"/>
+         </font>
+         <GridPane.margin>
+            <Insets left="80.0" top="-70.0"/>
+         </GridPane.margin>
+      </Label>
+      <RadioButton maxHeight="40.0" maxWidth="200.0" mnemonicParsing="false"
+                   text="Acquired Respiratory Distress Syndrome" wrapText="true" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="30.0" top="-230.0"/>
+         </GridPane.margin>
+      </RadioButton>
+      <RadioButton maxHeight="40.0" maxWidth="200.0" mnemonicParsing="false" text="Angina" wrapText="true"
+                   GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="30.0" top="-150.0"/>
+         </GridPane.margin>
+      </RadioButton>
+      <RadioButton maxHeight="40.0" maxWidth="200.0" mnemonicParsing="false" text="Anxiety or Panic Discorders"
+                   wrapText="true" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="30.0" top="-80.0"/>
+         </GridPane.margin>
+      </RadioButton>
+      <RadioButton maxHeight="40.0" maxWidth="200.0" mnemonicParsing="false" text="Arthritis (RA, OA)"
+                   wrapText="true" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="30.0"/>
+         </GridPane.margin>
+      </RadioButton>
+      <RadioButton maxHeight="40.0" maxWidth="200.0" mnemonicParsing="false" text="Asthma" wrapText="true"
+                   GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="30.0" top="80.0"/>
+         </GridPane.margin>
+      </RadioButton>
+      <RadioButton maxHeight="43.0" maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" prefHeight="43.0"
+                   prefWidth="200.0" text="Chronic Obstructive Pulmonary Disease (COPD)" wrapText="true"
+                   GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="30.0" top="150.0"/>
+         </GridPane.margin>
+      </RadioButton>
+      <RadioButton maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" text="Congestive Heart Failure (CHF)"
+                   wrapText="true" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="30.0" top="230.0"/>
+         </GridPane.margin>
+      </RadioButton>
+      <RadioButton maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" text="Degenerative Disc Disease"
+                   wrapText="true" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="30.0" top="310.0"/>
+         </GridPane.margin>
+      </RadioButton>
+      <RadioButton maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" text="Depression" wrapText="true"
+                   GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="30.0" top="390.0"/>
+         </GridPane.margin>
+      </RadioButton>
+      <RadioButton maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" text="Diabetes" wrapText="true"
+                   GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="30.0" top="470.0"/>
+         </GridPane.margin>
+      </RadioButton>
+      <RadioButton maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" text="Emphysema" wrapText="true"
+                   GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="30.0" top="-230.0"/>
+         </GridPane.margin>
+      </RadioButton>
+      <RadioButton maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" text="Hearing Impairment"
+                   wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="30.0" top="-150.0"/>
+         </GridPane.margin>
+      </RadioButton>
+      <RadioButton maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" text="Heart Attack" wrapText="true"
+                   GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="30.0" top="-80.0"/>
+         </GridPane.margin>
+      </RadioButton>
+      <RadioButton maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" text="Multiple Sclerosis"
+                   wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="30.0"/>
+         </GridPane.margin>
+      </RadioButton>
+      <RadioButton maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" text="Osteoporosis" wrapText="true"
+                   GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="30.0" top="80.0"/>
+         </GridPane.margin>
+      </RadioButton>
+      <RadioButton maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" text="Parkinson's Disease"
+                   wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="30.0" top="150.0"/>
+         </GridPane.margin>
+      </RadioButton>
+      <RadioButton maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" text="Peripheral Vascular disease"
+                   wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="30.0" top="230.0"/>
+         </GridPane.margin>
+      </RadioButton>
+      <RadioButton maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" text="Stroke or TIA" wrapText="true"
+                   GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="30.0" top="310.0"/>
+         </GridPane.margin>
+      </RadioButton>
+      <RadioButton maxWidth="200.0" minHeight="40.0" mnemonicParsing="false"
+                   text="Upper Gastrointestinal Disease (ulcer, hernia, reflux)" wrapText="true"
+                   GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="30.0" top="390.0"/>
+         </GridPane.margin>
+      </RadioButton>
+      <RadioButton maxWidth="200.0" minHeight="40.0" mnemonicParsing="false"
+                   text="Visual Impairment (cataracts, glaucoma)" wrapText="true" GridPane.columnIndex="1"
+                   GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="30.0" top="470.0"/>
+         </GridPane.margin>
+      </RadioButton>
+      <CheckBox mnemonicParsing="false" text="Up to date on Vaccination" GridPane.rowIndex="2">
+         <GridPane.margin>
+            <Insets left="60.0" top="150.0"/>
+         </GridPane.margin>
+      </CheckBox>
+      <Button defaultButton="true" mnemonicParsing="false" text="Submit" GridPane.columnIndex="1"
+              GridPane.rowIndex="2">
+         <GridPane.margin>
+            <Insets left="10.0" top="150.0"/>
+         </GridPane.margin>
+      </Button>
+   </GridPane>
+</VBox>
