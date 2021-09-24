@@ -7,9 +7,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
+
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-      prefWidth="600.0" xmlns="http://javafx.com/javafx/8" fx:controller="com.memeteam.cse360project.LoginController"
-      xmlns:fx="http://javafx.com/fxml">
+      prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.memeteam.cse360project.LoginController">
     <MenuBar>
         <Menu mnemonicParsing="false" text="File">
             <MenuItem mnemonicParsing="false" text="Exit Application"/>
@@ -48,13 +49,13 @@
                 <Insets left="-40.0" top="20.0"/>
             </GridPane.margin>
         </PasswordField>
-        <Button defaultButton="true" mnemonicParsing="false" text="Register" GridPane.columnIndex="1"
-                GridPane.rowIndex="1" onAction="#onRegisterButtonClick">
+        <Button defaultButton="true" mnemonicParsing="false" onAction="#onRegisterButtonClick" text="Register"
+                GridPane.columnIndex="1" GridPane.rowIndex="1">
             <GridPane.margin>
                 <Insets left="-80.0" top="120.0"/>
             </GridPane.margin>
         </Button>
-        <Button mnemonicParsing="false" text="Log in" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <Button disable="true" mnemonicParsing="false" text="Log in" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <GridPane.margin>
                 <Insets left="10.0" top="120.0"/>
             </GridPane.margin>
