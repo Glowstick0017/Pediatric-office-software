@@ -38,10 +38,13 @@
                 <MenuItem mnemonicParsing="false" text="Action 1"/>
                 <MenuItem mnemonicParsing="false" text="Action 2"/>
             </items>
+            <GridPane.margin>
+                <Insets left="30.0" top="30.0"/>
+            </GridPane.margin>
         </MenuButton>
         <Label text="Doctor Portal">
             <GridPane.margin>
-                <Insets left="50.0" top="-90.0"/>
+                <Insets left="80.0" top="-70.0"/>
             </GridPane.margin>
             <font>
                 <Font name="Arial Black" size="18.0"/>
@@ -49,9 +52,105 @@
         </Label>
         <ImageView fitHeight="38.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
             <GridPane.margin>
-                <Insets left="5.0" top="-90.0"/>
+                <Insets left="30.0" top="-70.0"/>
             </GridPane.margin>
             <Image url="@med.png"/>
         </ImageView>
+        <Label text="Name: " GridPane.columnIndex="1">
+            <GridPane.margin>
+                <Insets left="30.0" top="-80.0"/>
+            </GridPane.margin>
+        </Label>
+        <Label text="Age:" GridPane.columnIndex="1">
+            <GridPane.margin>
+                <Insets left="30.0" top="-40.0"/>
+            </GridPane.margin>
+        </Label>
+        <Label text="Lastname, Firstname" GridPane.columnIndex="1">
+            <GridPane.margin>
+                <Insets left="120.0" top="-80.0"/>
+            </GridPane.margin>
+        </Label>
+        <Label text="##" GridPane.columnIndex="1">
+            <GridPane.margin>
+                <Insets left="120.0" top="-40.0"/>
+            </GridPane.margin>
+        </Label>
+        <Label text="Weight:" GridPane.columnIndex="1">
+            <GridPane.margin>
+                <Insets left="30.0"/>
+            </GridPane.margin>
+        </Label>
+        <Label text="Height:" GridPane.columnIndex="1">
+            <GridPane.margin>
+                <Insets left="30.0" top="40.0"/>
+            </GridPane.margin>
+        </Label>
+        <Label text="Temp:" GridPane.columnIndex="1">
+            <GridPane.margin>
+                <Insets left="30.0" top="80.0"/>
+            </GridPane.margin>
+        </Label>
+        <Label text="Blood Pressure:" GridPane.columnIndex="1">
+            <GridPane.margin>
+                <Insets left="30.0" top="120.0"/>
+            </GridPane.margin>
+        </Label>
+        <Label text="XX lbs." GridPane.columnIndex="1">
+            <GridPane.margin>
+                <Insets left="120.0"/>
+            </GridPane.margin>
+        </Label>
+        <Label text="X' XX&quot;" GridPane.columnIndex="1">
+            <GridPane.margin>
+                <Insets left="120.0" top="40.0"/>
+            </GridPane.margin>
+        </Label>
+        <Label text="XX° F" GridPane.columnIndex="1">
+            <GridPane.margin>
+                <Insets left="120.0" top="80.0"/>
+            </GridPane.margin>
+        </Label>
+        <Label text="XXX / XX" GridPane.columnIndex="1">
+            <GridPane.margin>
+                <Insets left="120.0" top="120.0"/>
+            </GridPane.margin>
+        </Label>
+        <Label text="Known Allergies and Health Concerns:" GridPane.rowIndex="1">
+            <GridPane.margin>
+                <Insets left="30.0" top="-60.0"/>
+            </GridPane.margin>
+        </Label>
+        <TextArea editable="false" maxHeight="60.0" minWidth="540.0" text="Nurses Notes.." wrapText="true"
+                  GridPane.rowIndex="1">
+            <GridPane.margin>
+                <Insets left="30.0" top="30.0"/>
+            </GridPane.margin>
+        </TextArea>
+        <Button defaultButton="true" disable="true" mnemonicParsing="false" text="Medical History">
+            <GridPane.margin>
+                <Insets left="150.0" top="30.0"/>
+            </GridPane.margin>
+        </Button>
+        <Button disable="true" mnemonicParsing="false" text="Messages">
+            <GridPane.margin>
+                <Insets left="65.0" top="100.0"/>
+            </GridPane.margin>
+        </Button>
+        <Button disable="true" mnemonicParsing="false" text="Contact">
+            <GridPane.margin>
+                <Insets left="150.0" top="100.0"/>
+            </GridPane.margin>
+        </Button>
+        <Label text="Doctors Notes and Prescriptions:" GridPane.rowIndex="2">
+            <GridPane.margin>
+                <Insets left="30.0" top="-120.0"/>
+            </GridPane.margin>
+        </Label>
+        <TextArea maxHeight="60.0" minWidth="540.0" promptText="Notes.." GridPane.rowIndex="2">
+            <GridPane.margin>
+                <Insets left="30.0" top="-30.0"/>
+            </GridPane.margin>
+        </TextArea>
     </GridPane>
 </VBox>
