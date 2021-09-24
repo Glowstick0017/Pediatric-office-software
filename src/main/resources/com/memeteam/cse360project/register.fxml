@@ -6,8 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0"
       prefWidth="600.0" xmlns="http://javafx.com/javafx/8">
     <MenuBar>
         <Menu mnemonicParsing="false" text="File">
@@ -17,7 +16,7 @@
             <MenuItem mnemonicParsing="false" text="About"/>
         </Menu>
     </MenuBar>
-    <GridPane prefHeight="376.0" prefWidth="600.0">
+    <GridPane prefHeight="377.0" prefWidth="600.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
@@ -86,10 +85,10 @@
                 <Insets left="-20.0" top="160.0"/>
             </GridPane.margin>
         </TextField>
-        <Button maxWidth="100.0" mnemonicParsing="false" text="Register" GridPane.columnIndex="1"
+        <Button disable="true" maxWidth="100.0" mnemonicParsing="false" text="Register" GridPane.columnIndex="1"
                 GridPane.rowIndex="2">
             <GridPane.margin>
-                <Insets left="-50.0" top="20.0"/>
+                <Insets left="-50.0" top="100.0"/>
             </GridPane.margin>
         </Button>
         <ImageView fitHeight="70.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true"
@@ -99,5 +98,11 @@
             </GridPane.margin>
             <Image url="@med.png"/>
         </ImageView>
+        <Button defaultButton="true" maxWidth="100.0" mnemonicParsing="false" text="Medical History"
+                GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <GridPane.margin>
+                <Insets left="-50.0" top="10.0"/>
+            </GridPane.margin>
+        </Button>
     </GridPane>
 </VBox>
