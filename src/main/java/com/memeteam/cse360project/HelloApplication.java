@@ -14,10 +14,10 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
 
         // load resources for scene
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("message.fxml"));
 
         // define scene
-        Scene scene = new Scene(fxmlLoader.load(), 500, 350);
+        Scene scene = new Scene(fxmlLoader.load());
 
         // change scene title (toolbar title)
         stage.setTitle("Meme Team Medical Software");
