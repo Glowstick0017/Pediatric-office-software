@@ -9,6 +9,7 @@ module com.memeteam.cse360project {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
+    requires java.sql;
 
     opens com.memeteam.cse360project to javafx.fxml;
     exports com.memeteam.cse360project;

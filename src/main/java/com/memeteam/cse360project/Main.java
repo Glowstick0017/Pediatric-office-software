@@ -8,7 +8,12 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.sql.Connection;
+
 import java.io.IOException;
+import java.sql.DatabaseMetaData;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class Main extends Application {
