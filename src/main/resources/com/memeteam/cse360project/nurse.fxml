@@ -7,16 +7,15 @@
 <?import javafx.scene.text.*?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-      prefWidth="600.0" xmlns="http://javafx.com/javafx/8">
+      prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.memeteam.cse360project.NurseController">
    <MenuBar>
       <Menu mnemonicParsing="false" text="File">
-         <MenuItem mnemonicParsing="false" text="Close"/>
-      </Menu>
-      <Menu mnemonicParsing="false" text="Edit">
-         <MenuItem mnemonicParsing="false" text="Delete"/>
+         <MenuItem mnemonicParsing="false" text="Log out" onAction="#logOut"/>
+         <MenuItem mnemonicParsing="false" text="Exit Application" onAction="#exit"/>
       </Menu>
       <Menu mnemonicParsing="false" text="Help">
-         <MenuItem mnemonicParsing="false" text="About"/>
+         <MenuItem mnemonicParsing="false" text="About" onAction="#about"/>
       </Menu>
    </MenuBar>
    <GridPane prefHeight="383.0" prefWidth="600.0">

@@ -8,7 +8,8 @@
 
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="216.0"
-      prefWidth="240.0" xmlns="http://javafx.com/javafx/8">
+      prefWidth="240.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.memeteam.cse360project.ContactController">
    <GridPane prefHeight="205.0" prefWidth="476.0">
       <columnConstraints>
          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
@@ -30,7 +31,7 @@
             <Insets left="80.0" top="-120.0"/>
          </GridPane.margin>
       </Label>
-      <Button mnemonicParsing="false" text="Cancel">
+      <Button mnemonicParsing="false" text="Cancel" onAction="#onCancelButtonClick">
          <opaqueInsets>
             <Insets/>
          </opaqueInsets>
@@ -38,7 +39,7 @@
             <Insets left="40.0" top="130.0"/>
          </GridPane.margin>
       </Button>
-      <Button defaultButton="true" mnemonicParsing="false" text="Save Changes">
+      <Button defaultButton="true" mnemonicParsing="false" text="Save Changes" onAction="#onSaveButtonClick">
          <opaqueInsets>
             <Insets/>
          </opaqueInsets>

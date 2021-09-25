@@ -7,16 +7,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
       prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.memeteam.cse360project.LoginController">
     <MenuBar>
         <Menu mnemonicParsing="false" text="File">
-            <MenuItem mnemonicParsing="false" text="Exit Application"/>
+            <MenuItem mnemonicParsing="false" text="Exit Application" onAction="#exit"/>
         </Menu>
         <Menu mnemonicParsing="false" text="Help">
-            <MenuItem mnemonicParsing="false" text="About"/>
+            <MenuItem mnemonicParsing="false" text="About" onAction="#about"/>
         </Menu>
     </MenuBar>
     <GridPane prefHeight="377.0" prefWidth="600.0">
@@ -39,23 +38,26 @@
                 <Insets left="-110.0" top="20.0"/>
             </GridPane.margin>
         </Label>
-        <TextField maxWidth="150.0" promptText="username.." GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <TextField fx:id="usernameField" maxWidth="150.0" onKeyPressed="#onUsernameInputChange"
+                   promptText="username.." GridPane.columnIndex="1" GridPane.rowIndex="1">
             <GridPane.margin>
                 <Insets left="-40.0" top="-60.0"/>
             </GridPane.margin>
         </TextField>
-        <PasswordField maxWidth="150.0" promptText="password.." GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <PasswordField fx:id="passwordField" maxWidth="150.0" onKeyPressed="#onPasswordInputChange"
+                       promptText="password.." GridPane.columnIndex="1" GridPane.rowIndex="1">
             <GridPane.margin>
                 <Insets left="-40.0" top="20.0"/>
             </GridPane.margin>
         </PasswordField>
-        <Button defaultButton="true" mnemonicParsing="false" onAction="#onRegisterButtonClick" text="Register"
-                GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <Button fx:id="registerButton" defaultButton="true" mnemonicParsing="false"
+                onAction="#onRegisterButtonClick" text="Register" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <GridPane.margin>
                 <Insets left="-80.0" top="120.0"/>
             </GridPane.margin>
         </Button>
-        <Button disable="true" mnemonicParsing="false" text="Log in" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <Button fx:id="loginButton" disable="true" mnemonicParsing="false" onAction="#onLoginButtonClick"
+                text="Log in" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <GridPane.margin>
                 <Insets left="10.0" top="120.0"/>
             </GridPane.margin>
@@ -74,6 +76,12 @@
             <padding>
                 <Insets left="-60.0"/>
             </padding>
+        </Label>
+        <Label text="Invalid Credentials" textFill="RED" visible="false" GridPane.columnIndex="1"
+               GridPane.rowIndex="2" fx:id="credentialError">
+            <GridPane.margin>
+                <Insets left="-50.0" top="-40.0"/>
+            </GridPane.margin>
         </Label>
     </GridPane>
 </VBox>

@@ -7,16 +7,15 @@
 <?import javafx.scene.layout.*?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0"
-      prefWidth="500.0" xmlns="http://javafx.com/javafx/8">
+      prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.memeteam.cse360project.PatientController">
    <MenuBar>
       <Menu mnemonicParsing="false" text="File">
-         <MenuItem mnemonicParsing="false" text="Close"/>
-      </Menu>
-      <Menu mnemonicParsing="false" text="Edit">
-         <MenuItem mnemonicParsing="false" text="Delete"/>
+         <MenuItem mnemonicParsing="false" text="Log out" onAction="#logOut"/>
+         <MenuItem mnemonicParsing="false" text="Exit Application" onAction="#exit"/>
       </Menu>
       <Menu mnemonicParsing="false" text="Help">
-         <MenuItem mnemonicParsing="false" text="About"/>
+         <MenuItem mnemonicParsing="false" text="About" onAction="#about"/>
       </Menu>
    </MenuBar>
    <GridPane prefHeight="411.0" prefWidth="500.0">
@@ -75,15 +74,19 @@
             <Insets left="30.0" top="-30.0"/>
          </GridPane.margin>
       </TextArea>
-      <Button defaultButton="true" disable="true" mnemonicParsing="false" text="Edit Medical History"
-              GridPane.columnIndex="1">
+      <Button defaultButton="true" mnemonicParsing="false" text="Edit Medical History" GridPane.columnIndex="1" onAction="#onEditMedicalButtonClick">
          <GridPane.margin>
             <Insets left="30.0" top="30.0"/>
          </GridPane.margin>
       </Button>
-      <Button disable="true" mnemonicParsing="false" text="Send Message" GridPane.columnIndex="1">
+      <Button mnemonicParsing="false" text="Send Message" GridPane.columnIndex="1" onAction="#onSendMessageButtonClick">
          <GridPane.margin>
             <Insets left="30.0" top="100.0"/>
+         </GridPane.margin>
+      </Button>
+      <Button defaultButton="true" mnemonicParsing="false" text="Edit Contact Info" GridPane.columnIndex="1" onAction="#onEditContactButtonClick">
+         <GridPane.margin>
+            <Insets left="30.0" top="-40.0"/>
          </GridPane.margin>
       </Button>
    </GridPane>

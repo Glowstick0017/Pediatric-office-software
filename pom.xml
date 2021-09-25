@@ -100,7 +100,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.memeteam.cse360project/com.memeteam.cse360project.HelloApplication
+                            <mainClass>com.memeteam.cse360project/com.memeteam.cse360project.Main
                             </mainClass>
                         </configuration>
                     </execution>

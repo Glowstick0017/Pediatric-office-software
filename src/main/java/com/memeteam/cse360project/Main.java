@@ -1,6 +1,8 @@
 package com.memeteam.cse360project;
 
 import javafx.application.Application;
+import javafx.application.ConditionalFeature;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -9,12 +11,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class HelloApplication extends Application {
+public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-
         // load resources for scene
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("message.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("login.fxml"));
 
         // define scene
         Scene scene = new Scene(fxmlLoader.load());
@@ -26,7 +27,7 @@ public class HelloApplication extends Application {
         stage.setAlwaysOnTop(true);
 
         // set window icon
-        stage.getIcons().add(new Image(Objects.requireNonNull(HelloApplication.class.getResourceAsStream("med.png"))));
+        stage.getIcons().add(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("med.png"))));
 
         // set the scene of the stage to what was defined
         stage.setScene(scene);
