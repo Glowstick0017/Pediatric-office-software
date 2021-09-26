@@ -29,13 +29,23 @@ public class RegisterController {
     public Button registerButton;
     public Label existsLabel;
 
+    private static String medCombo = "000000000000000000000";
+
     public void onMedicalButtonClick() throws IOException {
+        MedicalController.setMedCombo(medCombo);
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("medical.fxml"));
+        Parent root= fxmlLoader.load();
+        MedicalController mc = fxmlLoader.getController();
+        mc.predefine(medCombo);
         Stage stage = new Stage();
-        stage.setScene(new Scene(fxmlLoader.load()));
+        stage.setScene(new Scene(root));
         stage.setAlwaysOnTop(true);
         stage.getIcons().add(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("med.png"))));
         stage.showAndWait();
+    }
+
+    public static void setMedCombo(String medCombo) {
+        RegisterController.medCombo = medCombo;
     }
 
     public void onContactButtonClick() throws IOException {
