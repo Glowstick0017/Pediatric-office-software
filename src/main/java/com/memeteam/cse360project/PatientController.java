@@ -53,6 +53,77 @@ public class PatientController {
         stage.showAndWait();
     }
 
+    public void onEditContactButtonClick(ActionEvent event) throws IOException {
+        ContactController.setEmail(getUserEmail(currentUser));
+        ContactController.setPhone(getUserPhone(currentUser));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("contact.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(fxmlLoader.load()));
+        ContactController cc = fxmlLoader.getController();
+        cc.predefine(getUserPhone(currentUser), getUserEmail(currentUser));
+        stage.setAlwaysOnTop(true);
+        stage.getIcons().add(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("med.png"))));
+        stage.showAndWait();
+    }
+
+    public String getUserPhone(String username) {
+        String sql = "SELECT phone\n" +
+                "FROM patients\n" +
+                "WHERE username='" + username + "'";
+        String phone = "";
+        try (Connection conn = Main.connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                phone = rs.getString("phone");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return phone;
+    }
+
+    public String getUserEmail(String username) {
+        String sql = "SELECT email\n" +
+                "FROM patients\n" +
+                "WHERE username='" + username + "'";
+        String email = "";
+        try (Connection conn = Main.connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                email = rs.getString("email");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return email;
+    }
+
+    public static void setUserPhone(String phone) {
+        String sql = "UPDATE patients\n" +
+                "SET phone = '" + phone + "'\n" +
+                "WHERE username='" + currentUser + "'";
+        try (Connection conn = Main.connect();
+             Statement stmt = conn.createStatement()) {
+            stmt.execute(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void setUserEmail(String email) {
+        String sql = "UPDATE patients\n" +
+                "SET email = '" + email + "'\n" +
+                "WHERE username='" + currentUser + "'";
+        try (Connection conn = Main.connect();
+             Statement stmt = conn.createStatement()) {
+            stmt.execute(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void setUserMedCombo(String medcombo) {
         String sql = "UPDATE patients\n" +
                 "SET medical = '" + medcombo + "'\n" +
@@ -84,15 +155,6 @@ public class PatientController {
 
     public void onSendMessageButtonClick(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("message.fxml"));
-        Stage stage = new Stage();
-        stage.setScene(new Scene(fxmlLoader.load()));
-        stage.setAlwaysOnTop(true);
-        stage.getIcons().add(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("med.png"))));
-        stage.showAndWait();
-    }
-
-    public void onEditContactButtonClick(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("contact.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(fxmlLoader.load()));
         stage.setAlwaysOnTop(true);

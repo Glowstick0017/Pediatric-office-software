@@ -30,6 +30,8 @@ public class LoginController {
     @FXML
     protected void onRegisterButtonClick(ActionEvent event) throws IOException {
         RegisterController.setMedCombo("000000000000000000000");
+        RegisterController.setEmail("");
+        RegisterController.setPhone("");
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         Parent root= FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("register.fxml")));

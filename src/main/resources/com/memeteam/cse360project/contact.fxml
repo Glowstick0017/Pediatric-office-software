@@ -57,12 +57,12 @@
             <Insets left="30.0" top="40.0"/>
          </GridPane.margin>
       </Label>
-      <TextField maxWidth="120.0" promptText="(123) 456-7890 ">
+      <TextField maxWidth="120.0" promptText="(123) 456-7890 " fx:id="phoneField">
          <GridPane.margin>
             <Insets left="80.0" top="-30.0"/>
          </GridPane.margin>
       </TextField>
-      <TextField maxWidth="120.0" promptText="email">
+      <TextField maxWidth="120.0" promptText="email" fx:id="emailField">
          <GridPane.margin>
             <Insets left="80.0" top="40.0"/>
          </GridPane.margin>

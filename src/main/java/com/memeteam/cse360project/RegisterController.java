@@ -30,6 +30,8 @@ public class RegisterController {
     public Label existsLabel;
 
     private static String medCombo = "000000000000000000000";
+    private static String phone = "";
+    private static String email = "";
 
     public void onMedicalButtonClick() throws IOException {
         MedicalController.setMedCombo(medCombo);
@@ -44,14 +46,27 @@ public class RegisterController {
         stage.showAndWait();
     }
 
+    public static void setPhone(String phone) {
+        RegisterController.phone = phone;
+    }
+
+    public static void setEmail(String email) {
+        RegisterController.email = email;
+    }
+
     public static void setMedCombo(String medCombo) {
         RegisterController.medCombo = medCombo;
     }
 
     public void onContactButtonClick() throws IOException {
+        ContactController.setPhone(phone);
+        ContactController.setEmail(email);
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("contact.fxml"));
+        Parent root= fxmlLoader.load();
+        ContactController cc = fxmlLoader.getController();
+        cc.predefine(phone,email);
         Stage stage = new Stage();
-        stage.setScene(new Scene(fxmlLoader.load()));
+        stage.setScene(new Scene(root));
         stage.setAlwaysOnTop(true);
         stage.getIcons().add(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("med.png"))));
         stage.showAndWait();
@@ -121,10 +136,10 @@ public class RegisterController {
             e.printStackTrace();
         }
         int age = 2021 - dateField.getValue().getYear();
-        sql = "INSERT INTO patients (id, firstname, lastname, age, username, password, medical)\n"
+        sql = "INSERT INTO patients (id, firstname, lastname, age, username, password, medical, phone, email)\n"
                 + "VALUES (" + id + ",'" + firstnameField.getText() + "','" + lastnameField.getText() +
                 "'," + age + ",'" + usernameField.getText().toUpperCase(Locale.ROOT) +
-                "','" + passwordField.getText() + "','" + medCombo + "');";
+                "','" + passwordField.getText() + "','" + medCombo + "','" + phone + "','" + email + "');";
         try (Connection conn = Main.connect();
              Statement stmt = conn.createStatement()) {
             stmt.execute(sql);
