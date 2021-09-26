@@ -17,6 +17,7 @@ public class MessageController {
     public Button sendMessageButton;
 
     public String currentUser;
+    public Button cancelButton;
 
     public void setCurrentUser(String currentUser) {
         this.currentUser = currentUser;

@@ -78,7 +78,8 @@
             <Insets left="150.0" top="30.0"/>
          </GridPane.margin>
       </Button>
-      <Button disable="true" mnemonicParsing="false" text="Messages" fx:id="messagesButton">
+      <Button disable="true" mnemonicParsing="false" text="Messages" fx:id="messagesButton"
+              onAction="#onMessageButtonClick">
          <GridPane.margin>
             <Insets left="65.0" top="100.0"/>
          </GridPane.margin>

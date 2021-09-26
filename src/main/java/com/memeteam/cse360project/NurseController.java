@@ -190,4 +190,36 @@ public class NurseController {
         }
         return email;
     }
+
+    public void onMessageButtonClick(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("message.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(fxmlLoader.load()));
+        MessageController mc = fxmlLoader.getController();
+        mc.setCurrentUser(currentUser);
+        mc.messageField.setText(getUserMessage(currentUser));
+        mc.messageField.setEditable(false);
+        mc.sendMessageButton.setVisible(false);
+        mc.cancelButton.setText("OK");
+        stage.setAlwaysOnTop(true);
+        stage.getIcons().add(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("med.png"))));
+        stage.showAndWait();
+    }
+
+    public String getUserMessage(String username) {
+        String sql = "SELECT message\n" +
+                "FROM patients\n" +
+                "WHERE username='" + username + "'";
+        String message = "";
+        try (Connection conn = Main.connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                message = rs.getString("message");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return message;
+    }
 }
