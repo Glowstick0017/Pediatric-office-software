@@ -140,4 +140,54 @@ public class NurseController {
     }
 
 
+    public void onContactButtonClick(ActionEvent event) throws IOException {
+        ContactController.setEmail(getUserEmail(currentUser));
+        ContactController.setPhone(getUserPhone(currentUser));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("contact.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(fxmlLoader.load()));
+        ContactController cc = fxmlLoader.getController();
+        cc.predefine(getUserPhone(currentUser), getUserEmail(currentUser));
+        cc.phoneField.setEditable(false);
+        cc.emailField.setEditable(false);
+        cc.cancelButton.setText("OK");
+        cc.saveButton.setVisible(false);
+        stage.setAlwaysOnTop(true);
+        stage.getIcons().add(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("med.png"))));
+        stage.showAndWait();
+    }
+
+    public String getUserPhone(String username) {
+        String sql = "SELECT phone\n" +
+                "FROM patients\n" +
+                "WHERE username='" + username + "'";
+        String phone = "";
+        try (Connection conn = Main.connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                phone = rs.getString("phone");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return phone;
+    }
+
+    public String getUserEmail(String username) {
+        String sql = "SELECT email\n" +
+                "FROM patients\n" +
+                "WHERE username='" + username + "'";
+        String email = "";
+        try (Connection conn = Main.connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                email = rs.getString("email");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return email;
+    }
 }

@@ -2,6 +2,7 @@ package com.memeteam.cse360project;
 
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -11,6 +12,8 @@ public class ContactController {
     public static String email;
     public TextField phoneField;
     public TextField emailField;
+    public Button cancelButton;
+    public Button saveButton;
 
     public static void setPhone(String phone) {
         ContactController.phone = phone;

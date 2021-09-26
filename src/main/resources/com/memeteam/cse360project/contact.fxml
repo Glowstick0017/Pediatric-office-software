@@ -31,7 +31,8 @@
             <Insets left="80.0" top="-120.0"/>
          </GridPane.margin>
       </Label>
-      <Button mnemonicParsing="false" text="Cancel" onAction="#onCancelButtonClick">
+      <Button mnemonicParsing="false" text="Cancel" onAction="#onCancelButtonClick"
+              fx:id="cancelButton">
          <opaqueInsets>
             <Insets/>
          </opaqueInsets>
@@ -39,7 +40,8 @@
             <Insets left="40.0" top="130.0"/>
          </GridPane.margin>
       </Button>
-      <Button defaultButton="true" mnemonicParsing="false" text="Save Changes" onAction="#onSaveButtonClick">
+      <Button defaultButton="true" mnemonicParsing="false" text="Save Changes" onAction="#onSaveButtonClick"
+              fx:id="saveButton">
          <opaqueInsets>
             <Insets/>
          </opaqueInsets>
