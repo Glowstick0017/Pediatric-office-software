@@ -119,7 +119,8 @@
          </GridPane.margin>
       </Label>
       <Label text="Blood Pressure:" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-      <TextField maxWidth="75.0" promptText="XX lbs." GridPane.rowIndex="1" fx:id="weightField">
+      <TextField maxWidth="75.0" promptText="XX lbs." GridPane.rowIndex="1" fx:id="weightField"
+      onInputMethodTextChanged="#onWeightChange">
          <GridPane.margin>
             <Insets left="100.0" top="-70.0"/>
          </GridPane.margin>

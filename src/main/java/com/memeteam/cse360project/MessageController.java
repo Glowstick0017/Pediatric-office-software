@@ -41,8 +41,9 @@ public class MessageController {
     }
 
     public void setUserMessage(String currentUser) {
+        String message = messageField.getText().replaceAll("'", "''");
         String sql = "UPDATE patients\n" +
-                "SET message = '" + messageField.getText() + "'\n" +
+                "SET message = '" + message + "'\n" +
                 "WHERE username='" + currentUser + "'";
         try (Connection conn = Main.connect();
              Statement stmt = conn.createStatement()) {

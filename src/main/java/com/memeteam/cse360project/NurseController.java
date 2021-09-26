@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -221,5 +222,8 @@ public class NurseController {
             e.printStackTrace();
         }
         return message;
+    }
+
+    public void onWeightChange(InputMethodEvent inputMethodEvent) {
     }
 }
