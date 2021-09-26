@@ -5,10 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -20,6 +17,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Locale;
 import java.util.Objects;
 
 public class RegisterController {
@@ -29,6 +27,7 @@ public class RegisterController {
     public TextField usernameField;
     public TextField passwordField;
     public Button registerButton;
+    public Label existsLabel;
 
     public void onMedicalButtonClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("medical.fxml"));
@@ -68,6 +67,37 @@ public class RegisterController {
     }
 
     public void onRegisterButtonClick(ActionEvent event) throws IOException {
+        if (userExists(usernameField.getText().toUpperCase(Locale.ROOT))) {
+            existsLabel.setVisible(true);
+        } else {
+            registerUser();
+            Node source = (Node) event.getSource();
+            Stage stage = (Stage) source.getScene().getWindow();
+            Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("login.fxml")));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+    }
+
+    public boolean userExists(String username) {
+        String sql = "SELECT *\n" +
+                "FROM patients\n" +
+                "WHERE username='" + username + "'";
+        int exists = 0;
+        try (Connection conn = Main.connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                exists = rs.getInt("id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return exists > 0;
+    }
+
+    public void registerUser() {
         String sql = "SELECT COUNT(*)\n" +
                 "FROM patients";
         int id = 0;
@@ -83,7 +113,7 @@ public class RegisterController {
         int age = 2021 - dateField.getValue().getYear();
         sql = "INSERT INTO patients (id, firstname, lastname, age, username, password)\n"
                 + "VALUES (" + id + ",'" + firstnameField.getText() + "','" + lastnameField.getText() +
-                "'," + age + ",'" + usernameField.getText() +
+                "'," + age + ",'" + usernameField.getText().toUpperCase(Locale.ROOT) +
                 "','" + passwordField.getText() + "');";
         try (Connection conn = Main.connect();
              Statement stmt = conn.createStatement()) {
@@ -91,12 +121,6 @@ public class RegisterController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        Node source = (Node) event.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        Parent root= FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("login.fxml")));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
     }
 
     public void exit(ActionEvent event) {

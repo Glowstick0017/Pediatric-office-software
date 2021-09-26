@@ -11,10 +11,10 @@
       fx:controller="com.memeteam.cse360project.RegisterController">
     <MenuBar>
         <Menu mnemonicParsing="false" text="File">
-            <MenuItem mnemonicParsing="false" text="Exit Application" onAction="#exit"/>
+            <MenuItem mnemonicParsing="false" onAction="#exit" text="Exit Application"/>
         </Menu>
         <Menu mnemonicParsing="false" text="Help">
-            <MenuItem mnemonicParsing="false" text="About" onAction="#about"/>
+            <MenuItem mnemonicParsing="false" onAction="#about" text="About"/>
         </Menu>
     </MenuBar>
     <GridPane prefHeight="377.0" prefWidth="600.0">
@@ -45,14 +45,14 @@
                 <Insets left="-110.0" top="-80.0"/>
             </GridPane.margin>
         </Label>
-        <TextField maxWidth="130.0" promptText="first name.." GridPane.columnIndex="1" GridPane.rowIndex="1"
-                   fx:id="firstnameField" onKeyPressed="#onInputChange">
+        <TextField fx:id="firstnameField" maxWidth="130.0" onKeyPressed="#onInputChange" promptText="first name.."
+                   GridPane.columnIndex="1" GridPane.rowIndex="1">
             <GridPane.margin>
                 <Insets left="-20.0" top="-160.0"/>
             </GridPane.margin>
         </TextField>
-        <TextField maxWidth="130.0" promptText="last name.." GridPane.columnIndex="1" GridPane.rowIndex="1"
-                   fx:id="lastnameField" onKeyPressed="#onInputChange">
+        <TextField fx:id="lastnameField" maxWidth="130.0" onKeyPressed="#onInputChange" promptText="last name.."
+                   GridPane.columnIndex="1" GridPane.rowIndex="1">
             <GridPane.margin>
                 <Insets left="-20.0" top="-80.0"/>
             </GridPane.margin>
@@ -63,7 +63,8 @@
                 <Insets left="-110.0"/>
             </GridPane.margin>
         </Text>
-        <DatePicker maxWidth="130.0" promptText="MM/DD/YYYY" GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="dateField">
+        <DatePicker fx:id="dateField" maxWidth="130.0" promptText="MM/DD/YYYY" GridPane.columnIndex="1"
+                    GridPane.rowIndex="1">
             <GridPane.margin>
                 <Insets left="-20.0"/>
             </GridPane.margin>
@@ -78,20 +79,20 @@
                 <Insets left="-110.0" top="160.0"/>
             </GridPane.margin>
         </Label>
-        <TextField maxWidth="130.0" promptText="username.." GridPane.columnIndex="1" GridPane.rowIndex="1"
-                   fx:id="usernameField" onKeyPressed="#onInputChange">
+        <TextField fx:id="usernameField" maxWidth="130.0" onKeyPressed="#onInputChange" promptText="username.."
+                   GridPane.columnIndex="1" GridPane.rowIndex="1">
             <GridPane.margin>
                 <Insets left="-20.0" top="80.0"/>
             </GridPane.margin>
         </TextField>
-        <TextField maxWidth="130.0" promptText="password.." GridPane.columnIndex="1" GridPane.rowIndex="1"
-                   fx:id="passwordField" onKeyPressed="#onInputChange">
+        <TextField fx:id="passwordField" maxWidth="130.0" onKeyPressed="#onInputChange" promptText="password.."
+                   GridPane.columnIndex="1" GridPane.rowIndex="1">
             <GridPane.margin>
                 <Insets left="-20.0" top="160.0"/>
             </GridPane.margin>
         </TextField>
-        <Button disable="true" maxWidth="100.0" mnemonicParsing="false" text="Register" GridPane.columnIndex="1"
-                GridPane.rowIndex="2" fx:id="registerButton" onAction="#onRegisterButtonClick">
+        <Button fx:id="registerButton" disable="true" maxWidth="100.0" mnemonicParsing="false"
+                onAction="#onRegisterButtonClick" text="Register" GridPane.columnIndex="1" GridPane.rowIndex="2">
             <GridPane.margin>
                 <Insets left="-50.0" top="100.0"/>
             </GridPane.margin>
@@ -115,10 +116,16 @@
                 <Insets left="20.0" top="10.0"/>
             </GridPane.margin>
         </Button>
+        <Label text="Username already exists" textFill="RED" visible="false" GridPane.columnIndex="1"
+               GridPane.rowIndex="1" fx:id="existsLabel">
+            <GridPane.margin>
+                <Insets left="120.0" top="80.0"/>
+            </GridPane.margin>
+        </Label>
     </GridPane>
-    <Label text="Already have an account? Click here to log in" underline="true" onMouseClicked="#onLoginTextClick">
+    <Label onMouseClicked="#onLoginTextClick" text="Already have an account? Click here to log in" underline="true">
         <VBox.margin>
-          <Insets left="180.0" top="10.0"/>
+            <Insets left="180.0" top="10.0"/>
         </VBox.margin>
     </Label>
 </VBox>
