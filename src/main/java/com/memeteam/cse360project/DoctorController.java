@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
@@ -13,6 +14,8 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class DoctorController {
+    public MenuButton userMenu;
+
     public void exit(ActionEvent event) {
         MenuItem mi = (MenuItem) event.getSource();
         Window window = mi.getParentPopup().getOwnerWindow();

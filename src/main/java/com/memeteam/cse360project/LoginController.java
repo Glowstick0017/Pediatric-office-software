@@ -84,7 +84,15 @@ public class LoginController {
             if (passwordField.getText().trim().equals("DocPass")) {
                 Node source = (Node) event.getSource();
                 Stage stage = (Stage) source.getScene().getWindow();
-                Parent root= FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("doctor.fxml")));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("doctor.fxml"));
+                Parent root= loader.load();
+                DoctorController dc = loader.getController();
+                for (int i = 0; i <= userCount(); i++) {
+                    MenuItem mi = new MenuItem();
+                    mi.setText(getNameByID(i));
+                    mi.setId(getUsernameByID(i));
+                    dc.userMenu.getItems().add(mi);
+                }
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
