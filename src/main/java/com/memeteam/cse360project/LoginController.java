@@ -220,7 +220,7 @@ public class LoginController {
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                notes = String.valueOf(rs.getInt("notes"));
+                notes = String.valueOf(rs.getInt("doctornotes"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
