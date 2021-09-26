@@ -84,7 +84,7 @@ public class RegisterController {
         String sql = "SELECT *\n" +
                 "FROM patients\n" +
                 "WHERE username='" + username + "'";
-        int exists = 0;
+        int exists = -1;
         try (Connection conn = Main.connect();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
@@ -94,7 +94,7 @@ public class RegisterController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return exists > 0;
+        return exists > -1;
     }
 
     public void registerUser() {

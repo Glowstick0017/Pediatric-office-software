@@ -4,7 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -13,6 +15,22 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class PatientController {
+
+    public TextArea notesField;
+    public Label nameField;
+    public Label ageField;
+
+    public void setName(String name) {
+        nameField.setText(name);
+    }
+
+    public void setAge(String age) {
+        ageField.setText(age);
+    }
+
+    public void setNotes(String notes) {
+        notesField.setText(notes);
+    }
 
     public void onEditMedicalButtonClick(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("medical.fxml"));

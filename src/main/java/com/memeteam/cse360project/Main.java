@@ -17,6 +17,8 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 public class Main extends Application {
+    private static String currentUser;
+
     @Override
     public void start(Stage stage) throws IOException {
         // load resources for scene
@@ -54,5 +56,13 @@ public class Main extends Application {
             System.out.println(e.getMessage());
         }
         return conn;
+    }
+
+    public static void setCurrentUser(String cu) {
+        currentUser = cu;
+    }
+
+    public String getCurrentUser() {
+        return currentUser;
     }
 }
