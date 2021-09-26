@@ -96,7 +96,15 @@ public class LoginController {
             if (passwordField.getText().trim().equals("NursePass")) {
                 Node source = (Node) event.getSource();
                 Stage stage = (Stage) source.getScene().getWindow();
-                Parent root= FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("nurse.fxml")));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("nurse.fxml"));
+                Parent root= loader.load();
+                NurseController nc = loader.getController();
+                for (int i = 0; i <= userCount(); i++) {
+                    MenuItem mi = new MenuItem();
+                    mi.setText(getNameByID(i));
+                    mi.setId(getUsernameByID(i));
+                    nc.userMenu.getItems().add(mi);
+                }
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
@@ -122,10 +130,46 @@ public class LoginController {
         }
     }
 
+    private String getUsernameByID(int id) {
+        String sql = "SELECT *\n" +
+                "FROM patients\n" +
+                "WHERE id='" + id + "'";
+        String username = "";
+        try (Connection conn = Main.connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                username = rs.getString("username");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return username;
+    }
+
     public String getName(String username) {
         String sql = "SELECT *\n" +
                 "FROM patients\n" +
                 "WHERE username='" + username + "'";
+        String firstName = "";
+        String lastName = "";
+        try (Connection conn = Main.connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                firstName = rs.getString("firstname");
+                lastName = rs.getString("lastname");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return lastName + ", " + firstName;
+    }
+
+    public String getNameByID(int id) {
+        String sql = "SELECT *\n" +
+                "FROM patients\n" +
+                "WHERE id=" + id;
         String firstName = "";
         String lastName = "";
         try (Connection conn = Main.connect();
@@ -193,6 +237,22 @@ public class LoginController {
             e.printStackTrace();
         }
         return exists > -1;
+    }
+
+    public int userCount() {
+        String sql = "SELECT *\n" +
+                "FROM patients";
+        int count = 0;
+        try (Connection conn = Main.connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                count = rs.getInt("id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
     }
 
     public boolean validatePassword(String username) {
