@@ -29,6 +29,7 @@ public class LoginController {
 
     @FXML
     protected void onRegisterButtonClick(ActionEvent event) throws IOException {
+        RegisterController.setMedCombo("000000000000000000000");
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         Parent root= FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("register.fxml")));
@@ -66,6 +67,7 @@ public class LoginController {
                 dc.setName(getName(usernameField.getText().toUpperCase(Locale.ROOT)));
                 dc.setAge(getAge(usernameField.getText().toUpperCase(Locale.ROOT)));
                 dc.setNotes(getNotes(usernameField.getText().toUpperCase(Locale.ROOT)));
+                dc.setCurrentUser(usernameField.getText().toUpperCase(Locale.ROOT));
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();

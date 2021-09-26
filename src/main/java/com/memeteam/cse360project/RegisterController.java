@@ -121,10 +121,10 @@ public class RegisterController {
             e.printStackTrace();
         }
         int age = 2021 - dateField.getValue().getYear();
-        sql = "INSERT INTO patients (id, firstname, lastname, age, username, password)\n"
+        sql = "INSERT INTO patients (id, firstname, lastname, age, username, password, medical)\n"
                 + "VALUES (" + id + ",'" + firstnameField.getText() + "','" + lastnameField.getText() +
                 "'," + age + ",'" + usernameField.getText().toUpperCase(Locale.ROOT) +
-                "','" + passwordField.getText() + "');";
+                "','" + passwordField.getText() + "','" + medCombo + "');";
         try (Connection conn = Main.connect();
              Statement stmt = conn.createStatement()) {
             stmt.execute(sql);

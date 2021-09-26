@@ -38,6 +38,7 @@ public class MedicalController {
 
     public void onSubmitButtonClick(ActionEvent event) {
         RegisterController.setMedCombo(medCombo);
+        PatientController.setUserMedCombo(medCombo);
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
