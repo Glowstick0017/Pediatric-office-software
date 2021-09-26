@@ -32,7 +32,7 @@
         <VBox.margin>
             <Insets/>
         </VBox.margin>
-        <MenuButton mnemonicParsing="false" text="Select Patient" fx:id="userMenu">
+        <MenuButton  maxWidth="103.0" minWidth="103.0" mnemonicParsing="false" text="Select Patient" fx:id="userMenu">
             <items>
             </items>
             <GridPane.margin>

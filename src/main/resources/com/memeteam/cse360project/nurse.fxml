@@ -11,11 +11,11 @@
       fx:controller="com.memeteam.cse360project.NurseController">
    <MenuBar>
       <Menu mnemonicParsing="false" text="File">
-         <MenuItem mnemonicParsing="false" text="Log out" onAction="#logOut"/>
-         <MenuItem mnemonicParsing="false" text="Exit Application" onAction="#exit"/>
+         <MenuItem mnemonicParsing="false" onAction="#logOut" text="Log out"/>
+         <MenuItem mnemonicParsing="false" onAction="#exit" text="Exit Application"/>
       </Menu>
       <Menu mnemonicParsing="false" text="Help">
-         <MenuItem mnemonicParsing="false" text="About" onAction="#about"/>
+         <MenuItem mnemonicParsing="false" onAction="#about" text="About"/>
       </Menu>
    </MenuBar>
    <GridPane prefHeight="383.0" prefWidth="600.0">
@@ -31,7 +31,7 @@
       <VBox.margin>
          <Insets/>
       </VBox.margin>
-      <MenuButton mnemonicParsing="false" text="Select Patient" fx:id="userMenu">
+      <MenuButton fx:id="userMenu" maxWidth="103.0" minWidth="103.0" mnemonicParsing="false" text="Select Patient">
          <items>
          </items>
          <GridPane.margin>
@@ -62,27 +62,28 @@
             <Insets left="30.0" top="70.0"/>
          </GridPane.margin>
       </Label>
-      <Label text="Lastname, Firstname" GridPane.columnIndex="1">
+      <Label text="Lastname, Firstname" GridPane.columnIndex="1" fx:id="nameLabel">
          <GridPane.margin>
             <Insets left="120.0" top="30.0"/>
          </GridPane.margin>
       </Label>
-      <Label text="##" GridPane.columnIndex="1">
+      <Label text="##" GridPane.columnIndex="1" fx:id="ageLabel">
          <GridPane.margin>
             <Insets left="120.0" top="70.0"/>
          </GridPane.margin>
       </Label>
-      <Button defaultButton="true" disable="true" mnemonicParsing="false" text="Medical History">
+      <Button defaultButton="true" disable="true" mnemonicParsing="false" text="Medical History" fx:id="medicalButton"
+      onAction="#onMedicalButtonClick">
          <GridPane.margin>
             <Insets left="150.0" top="30.0"/>
          </GridPane.margin>
       </Button>
-      <Button disable="true" mnemonicParsing="false" text="Messages">
+      <Button disable="true" mnemonicParsing="false" text="Messages" fx:id="messagesButton">
          <GridPane.margin>
             <Insets left="65.0" top="100.0"/>
          </GridPane.margin>
       </Button>
-      <Button disable="true" mnemonicParsing="false" text="Contact">
+      <Button disable="true" mnemonicParsing="false" text="Contact" fx:id="contactButton">
          <GridPane.margin>
             <Insets left="150.0" top="100.0"/>
          </GridPane.margin>
@@ -92,7 +93,7 @@
             <Insets left="30.0" top="-120.0"/>
          </GridPane.margin>
       </Label>
-      <TextArea maxHeight="60.0" minWidth="540.0" promptText="Notes.." GridPane.rowIndex="2">
+      <TextArea maxHeight="60.0" minWidth="540.0" promptText="Notes.." GridPane.rowIndex="2" fx:id="notesText">
          <GridPane.margin>
             <Insets left="30.0" top="-30.0"/>
          </GridPane.margin>
@@ -116,22 +117,22 @@
          </GridPane.margin>
       </Label>
       <Label text="Blood Pressure:" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-      <TextField maxWidth="75.0" promptText="XX lbs." GridPane.rowIndex="1">
+      <TextField maxWidth="75.0" promptText="XX lbs." GridPane.rowIndex="1" fx:id="weightField">
          <GridPane.margin>
             <Insets left="100.0" top="-70.0"/>
          </GridPane.margin>
       </TextField>
-      <TextField maxWidth="75.0" promptText="X' XX&quot;" GridPane.rowIndex="1">
+      <TextField maxWidth="75.0" promptText="X' XX&quot;" GridPane.rowIndex="1" fx:id="heightField">
          <GridPane.margin>
             <Insets left="100.0"/>
          </GridPane.margin>
       </TextField>
-      <TextField maxWidth="75.0" promptText="XX / XXX" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <TextField maxWidth="75.0" promptText="XX / XXX" GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="bpField">
          <GridPane.margin>
             <Insets left="100.0"/>
          </GridPane.margin>
       </TextField>
-      <TextField maxWidth="75.0" promptText="XX° F" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <TextField maxWidth="75.0" promptText="XX° F" GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="tempField">
          <GridPane.margin>
             <Insets left="100.0" top="-70.0"/>
          </GridPane.margin>

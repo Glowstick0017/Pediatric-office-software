@@ -167,7 +167,7 @@
          </GridPane.margin>
       </CheckBox>
       <Button defaultButton="true" mnemonicParsing="false" text="Submit" GridPane.columnIndex="1"
-              onAction="#onSubmitButtonClick" GridPane.rowIndex="2">
+              onAction="#onSubmitButtonClick" GridPane.rowIndex="2" fx:id="submitButton">
          <GridPane.margin>
             <Insets left="10.0" top="150.0"/>
          </GridPane.margin>

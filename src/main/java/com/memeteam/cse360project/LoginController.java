@@ -111,6 +111,7 @@ public class LoginController {
                     MenuItem mi = new MenuItem();
                     mi.setText(getNameByID(i));
                     mi.setId(getUsernameByID(i));
+                    mi.setOnAction(nc::onPatientClick);
                     nc.userMenu.getItems().add(mi);
                 }
                 Scene scene = new Scene(root);
