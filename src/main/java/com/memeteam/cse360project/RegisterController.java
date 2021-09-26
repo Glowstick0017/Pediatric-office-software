@@ -14,7 +14,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
+import javax.xml.transform.Result;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Objects;
 
 public class RegisterController {
@@ -63,6 +68,29 @@ public class RegisterController {
     }
 
     public void onRegisterButtonClick(ActionEvent event) throws IOException {
+        String sql = "SELECT COUNT(*)\n" +
+                "FROM patients";
+        int id = 0;
+        try (Connection conn = Main.connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                id = rs.getInt("COUNT(*)");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        int age = 2021 - dateField.getValue().getYear();
+        sql = "INSERT INTO patients (id, firstname, lastname, age, username, password)\n"
+                + "VALUES (" + id + ",'" + firstnameField.getText() + "','" + lastnameField.getText() +
+                "'," + age + ",'" + usernameField.getText() +
+                "','" + passwordField.getText() + "');";
+        try (Connection conn = Main.connect();
+             Statement stmt = conn.createStatement()) {
+            stmt.execute(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         Parent root= FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("login.fxml")));

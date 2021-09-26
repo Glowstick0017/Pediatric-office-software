@@ -44,4 +44,15 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch();
     }
+
+    public static Connection connect() {
+        String url = "jdbc:sqlite:database.db";
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection(url);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return conn;
+    }
 }
