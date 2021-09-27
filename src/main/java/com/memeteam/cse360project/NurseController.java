@@ -33,6 +33,7 @@ public class NurseController {
     public TextField tempField;
 
     public String currentUser;
+    public Button saveButton;
 
     public void onPatientClick(ActionEvent event) {
         MenuItem mi = (MenuItem) event.getSource();
@@ -42,13 +43,18 @@ public class NurseController {
         messagesButton.setDisable(false);
         contactButton.setDisable(false);
         nameLabel.setText(mi.getText());
-        ageLabel.setText(getUserAge(mi.getId()));
+        ageLabel.setText(getUserAge());
+        weightField.setText(getUserWeight());
+        heightField.setText(getUserHeight());
+        bpField.setText(getUserbp());
+        tempField.setText(getUserTemp());
+        notesText.setText(getUserNurseNotes());
     }
 
-    public String getUserAge(String username) {
+    public String getUserAge() {
         String sql = "SELECT *\n" +
                 "FROM patients\n" +
-                "WHERE username='" + username + "'";
+                "WHERE username='" + currentUser + "'";
         String age = "";
         try (Connection conn = Main.connect();
              Statement stmt = conn.createStatement();
@@ -60,6 +66,91 @@ public class NurseController {
             e.printStackTrace();
         }
         return age;
+    }
+
+    public String getUserWeight() {
+        String sql = "SELECT *\n" +
+                "FROM patients\n" +
+                "WHERE username='" + currentUser + "'";
+        String weight = "";
+        try (Connection conn = Main.connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                weight = rs.getString("weight");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return weight;
+    }
+
+    public String getUserHeight() {
+        String sql = "SELECT *\n" +
+                "FROM patients\n" +
+                "WHERE username='" + currentUser + "'";
+        String height = "";
+        try (Connection conn = Main.connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                height = rs.getString("height");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return height;
+    }
+
+    public String getUserbp() {
+        String sql = "SELECT *\n" +
+                "FROM patients\n" +
+                "WHERE username='" + currentUser + "'";
+        String bp = "";
+        try (Connection conn = Main.connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                bp = rs.getString("bloodpressure");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return bp;
+    }
+
+    public String getUserTemp() {
+        String sql = "SELECT *\n" +
+                "FROM patients\n" +
+                "WHERE username='" + currentUser + "'";
+        String temp = "";
+        try (Connection conn = Main.connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                temp = rs.getString("temperature");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return temp;
+    }
+
+    public String getUserNurseNotes() {
+        String sql = "SELECT *\n" +
+                "FROM patients\n" +
+                "WHERE username='" + currentUser + "'";
+        String notes = "";
+        try (Connection conn = Main.connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                notes = rs.getString("nursenotes");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return notes;
     }
 
     public void exit(ActionEvent event) {
@@ -224,6 +315,19 @@ public class NurseController {
         return message;
     }
 
-    public void onWeightChange(InputMethodEvent inputMethodEvent) {
+    public void onSaveButtonClick(ActionEvent event) {
+        String sql = "UPDATE patients\n" +
+                "SET weight = '" + weightField.getText() + "'\n" +
+                ", height = '" + heightField.getText().replaceAll("'","''") + "'\n" +
+                ", bloodpressure = '" + bpField.getText() + "'\n" +
+                ", temperature = '" + tempField.getText() + "'\n" +
+                ", nursenotes = '" + notesText.getText().replaceAll("'","''") + "'\n" +
+                "WHERE username='" + currentUser + "'";
+        try (Connection conn = Main.connect();
+             Statement stmt = conn.createStatement()) {
+            stmt.execute(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

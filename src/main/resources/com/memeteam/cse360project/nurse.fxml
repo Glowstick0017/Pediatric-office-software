@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0"
       prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.memeteam.cse360project.NurseController">
    <MenuBar>
@@ -62,30 +62,30 @@
             <Insets left="30.0" top="70.0"/>
          </GridPane.margin>
       </Label>
-      <Label text="Lastname, Firstname" GridPane.columnIndex="1" fx:id="nameLabel">
+      <Label fx:id="nameLabel" text="Lastname, Firstname" GridPane.columnIndex="1">
          <GridPane.margin>
             <Insets left="120.0" top="30.0"/>
          </GridPane.margin>
       </Label>
-      <Label text="##" GridPane.columnIndex="1" fx:id="ageLabel">
+      <Label fx:id="ageLabel" text="##" GridPane.columnIndex="1">
          <GridPane.margin>
             <Insets left="120.0" top="70.0"/>
          </GridPane.margin>
       </Label>
-      <Button defaultButton="true" disable="true" mnemonicParsing="false" text="Medical History" fx:id="medicalButton"
-      onAction="#onMedicalButtonClick">
+      <Button fx:id="medicalButton" defaultButton="true" disable="true" mnemonicParsing="false"
+              onAction="#onMedicalButtonClick" text="Medical History">
          <GridPane.margin>
             <Insets left="150.0" top="30.0"/>
          </GridPane.margin>
       </Button>
-      <Button disable="true" mnemonicParsing="false" text="Messages" fx:id="messagesButton"
-              onAction="#onMessageButtonClick">
+      <Button fx:id="messagesButton" disable="true" mnemonicParsing="false" onAction="#onMessageButtonClick"
+              text="Messages">
          <GridPane.margin>
             <Insets left="65.0" top="100.0"/>
          </GridPane.margin>
       </Button>
-      <Button disable="true" mnemonicParsing="false" text="Contact" fx:id="contactButton"
-              onAction="#onContactButtonClick">
+      <Button fx:id="contactButton" disable="true" mnemonicParsing="false" onAction="#onContactButtonClick"
+              text="Contact">
          <GridPane.margin>
             <Insets left="150.0" top="100.0"/>
          </GridPane.margin>
@@ -95,7 +95,7 @@
             <Insets left="30.0" top="-120.0"/>
          </GridPane.margin>
       </Label>
-      <TextArea maxHeight="60.0" minWidth="540.0" promptText="Notes.." GridPane.rowIndex="2" fx:id="notesText">
+      <TextArea fx:id="notesText" maxHeight="60.0" minWidth="540.0" promptText="Notes.." GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets left="30.0" top="-30.0"/>
          </GridPane.margin>
@@ -119,26 +119,33 @@
          </GridPane.margin>
       </Label>
       <Label text="Blood Pressure:" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-      <TextField maxWidth="75.0" promptText="XX lbs." GridPane.rowIndex="1" fx:id="weightField"
-      onInputMethodTextChanged="#onWeightChange">
+      <TextField fx:id="weightField" maxWidth="75.0" promptText="XX lbs." GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets left="100.0" top="-70.0"/>
          </GridPane.margin>
       </TextField>
-      <TextField maxWidth="75.0" promptText="X' XX&quot;" GridPane.rowIndex="1" fx:id="heightField">
+      <TextField fx:id="heightField" maxWidth="75.0" promptText="X' XX&quot;" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets left="100.0"/>
          </GridPane.margin>
       </TextField>
-      <TextField maxWidth="75.0" promptText="XX / XXX" GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="bpField">
+      <TextField fx:id="bpField" maxWidth="75.0" promptText="XX / XXX" GridPane.columnIndex="1"
+                 GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets left="100.0"/>
          </GridPane.margin>
       </TextField>
-      <TextField maxWidth="75.0" promptText="XX° F" GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="tempField">
+      <TextField fx:id="tempField" maxWidth="75.0" promptText="XX° F" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets left="100.0" top="-70.0"/>
          </GridPane.margin>
       </TextField>
+      <Button defaultButton="true" mnemonicParsing="false" text="Save Patient" GridPane.columnIndex="1"
+              GridPane.rowIndex="2"
+              onAction="#onSaveButtonClick" fx:id="saveButton">
+         <GridPane.margin>
+            <Insets left="-40.0" top="80.0"/>
+         </GridPane.margin>
+      </Button>
    </GridPane>
 </VBox>
