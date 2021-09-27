@@ -8,12 +8,9 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-import java.sql.Connection;
+import java.sql.*;
 
 import java.io.IOException;
-import java.sql.DatabaseMetaData;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.Objects;
 
 public class Main extends Application {
@@ -44,7 +41,41 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+        createNewTable();
         launch();
+    }
+
+    public static void createNewTable() {
+        // SQLite connection string
+        String url = "jdbc:sqlite:database.db";
+
+        // SQL statement for creating a new table
+        String sql = "CREATE TABLE IF NOT EXISTS patients (\n"
+                + "	id integer PRIMARY KEY,\n"
+                + "	firstname text,\n"
+                + "	lastname text,\n"
+                + "	age int,\n"
+                + "	username text,\n"
+                + "	password text,\n"
+                + "	medical text,\n"
+                + "	phone text,\n"
+                + "	email text,\n"
+                + "	message text,\n"
+                + "	weight text,\n"
+                + "	height text,\n"
+                + "	temperature text,\n"
+                + "	bloodpressure text,\n"
+                + "	nursenotes text,\n"
+                + "	doctornotes text\n"
+                + ");";
+
+        try (Connection conn = DriverManager.getConnection(url);
+             Statement stmt = conn.createStatement()) {
+            // create a new table
+            stmt.execute(sql);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static Connection connect() {
