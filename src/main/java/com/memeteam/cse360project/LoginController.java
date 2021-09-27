@@ -65,11 +65,11 @@ public class LoginController {
                 Stage stage = (Stage) source.getScene().getWindow();
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("patient.fxml"));
                 Parent root= loader.load();
-                PatientController dc = loader.getController();
-                dc.setName(getName(usernameField.getText().toUpperCase(Locale.ROOT)));
-                dc.setAge(getAge(usernameField.getText().toUpperCase(Locale.ROOT)));
-                dc.setNotes(getNotes(usernameField.getText().toUpperCase(Locale.ROOT)));
-                dc.setCurrentUser(usernameField.getText().toUpperCase(Locale.ROOT));
+                PatientController pc = loader.getController();
+                pc.setName(getName(usernameField.getText().toUpperCase(Locale.ROOT)));
+                pc.setAge(getAge(usernameField.getText().toUpperCase(Locale.ROOT)));
+                pc.setNotes(getNotes(usernameField.getText().toUpperCase(Locale.ROOT)));
+                pc.setCurrentUser(usernameField.getText().toUpperCase(Locale.ROOT));
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
@@ -91,6 +91,7 @@ public class LoginController {
                     MenuItem mi = new MenuItem();
                     mi.setText(getNameByID(i));
                     mi.setId(getUsernameByID(i));
+                    mi.setOnAction(dc::onPatientClick);
                     dc.userMenu.getItems().add(mi);
                 }
                 Scene scene = new Scene(root);
@@ -121,19 +122,9 @@ public class LoginController {
                 credentialError.setText("Wrong Password");
                 credentialError.setVisible(true);
             }
-        } else if (usernameField.getText().trim().toUpperCase(Locale.ROOT).equals("PATIENT")) {
-            if (passwordField.getText().trim().equals("PatPass")) {
-                Node source = (Node) event.getSource();
-                Stage stage = (Stage) source.getScene().getWindow();
-                Parent root= FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("patient.fxml")));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-            } else {
-                credentialError.setText("Wrong Password");
-                credentialError.setVisible(true);
-            }
-        } else {
+        }
+
+        else {
             credentialError.setText("Username does not exist");
             credentialError.setVisible(true);
         }
@@ -159,7 +150,7 @@ public class LoginController {
     public String getName(String username) {
         String sql = "SELECT *\n" +
                 "FROM patients\n" +
-                "WHERE username='" + username + "'";
+                "WHERE username='" + username.replaceAll("'","''") + "'";
         String firstName = "";
         String lastName = "";
         try (Connection conn = Main.connect();
@@ -220,13 +211,10 @@ public class LoginController {
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                notes = String.valueOf(rs.getInt("doctornotes"));
+                notes = rs.getString("doctornotes");
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-        if (notes.equals("0")) {
-            notes = "Notes...";
         }
         return notes;
     }
@@ -234,7 +222,7 @@ public class LoginController {
     public boolean userExists(String username) {
         String sql = "SELECT *\n" +
                 "FROM patients\n" +
-                "WHERE username='" + username + "'";
+                "WHERE username='" + username.replaceAll("'","''") + "'";
         int exists = -1;
         try (Connection conn = Main.connect();
              Statement stmt = conn.createStatement();
@@ -267,7 +255,7 @@ public class LoginController {
     public boolean validatePassword(String username) {
         String sql = "SELECT *\n" +
                 "FROM patients\n" +
-                "WHERE username='" + username + "'";
+                "WHERE username='" + username.replaceAll("'","''") + "'";
         String password = "";
         try (Connection conn = Main.connect();
              Statement stmt = conn.createStatement();

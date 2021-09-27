@@ -36,6 +36,7 @@ public class NurseController {
     public Button saveButton;
 
     public void onPatientClick(ActionEvent event) {
+        notesText.setDisable(false);
         MenuItem mi = (MenuItem) event.getSource();
         currentUser = mi.getId();
         userMenu.setText(mi.getText());

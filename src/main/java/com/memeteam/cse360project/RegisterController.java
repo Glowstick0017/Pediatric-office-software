@@ -137,9 +137,9 @@ public class RegisterController {
         }
         int age = 2021 - dateField.getValue().getYear();
         sql = "INSERT INTO patients (id, firstname, lastname, age, username, password, medical, phone, email)\n"
-                + "VALUES (" + id + ",'" + firstnameField.getText() + "','" + lastnameField.getText() +
-                "'," + age + ",'" + usernameField.getText().toUpperCase(Locale.ROOT) +
-                "','" + passwordField.getText() + "','" + medCombo + "','" + phone + "','" + email + "');";
+                + "VALUES (" + id + ",'" + firstnameField.getText().replaceAll("'","''") + "','" + lastnameField.getText().replaceAll("'","''") +
+                "'," + age + ",'" + usernameField.getText().toUpperCase(Locale.ROOT).replaceAll("'","''") +
+                "','" + passwordField.getText().replaceAll("'","''") + "','" + medCombo + "','" + phone + "','" + email.replaceAll("'","''") + "');";
         try (Connection conn = Main.connect();
              Statement stmt = conn.createStatement()) {
             stmt.execute(sql);

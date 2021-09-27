@@ -114,7 +114,7 @@ public class PatientController {
 
     public static void setUserEmail(String email) {
         String sql = "UPDATE patients\n" +
-                "SET email = '" + email + "'\n" +
+                "SET email = '" + email.replaceAll("'","''") + "'\n" +
                 "WHERE username='" + currentUser + "'";
         try (Connection conn = Main.connect();
              Statement stmt = conn.createStatement()) {

@@ -95,7 +95,7 @@
             <Insets left="30.0" top="-120.0"/>
          </GridPane.margin>
       </Label>
-      <TextArea fx:id="notesText" maxHeight="60.0" minWidth="540.0" promptText="Notes.." GridPane.rowIndex="2">
+      <TextArea fx:id="notesText" disable="true" maxHeight="60.0" minWidth="540.0" promptText="Notes.." GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets left="30.0" top="-30.0"/>
          </GridPane.margin>

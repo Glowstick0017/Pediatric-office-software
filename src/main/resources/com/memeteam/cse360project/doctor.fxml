@@ -6,17 +6,16 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="419.0"
       prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.memeteam.cse360project.DoctorController">
     <MenuBar>
         <Menu mnemonicParsing="false" text="File">
-            <MenuItem mnemonicParsing="false" text="Log out" onAction="#logOut"/>
-            <MenuItem mnemonicParsing="false" text="Exit Application" onAction="#exit"/>
+            <MenuItem mnemonicParsing="false" onAction="#logOut" text="Log out"/>
+            <MenuItem mnemonicParsing="false" onAction="#exit" text="Exit Application"/>
         </Menu>
         <Menu mnemonicParsing="false" text="Help">
-            <MenuItem mnemonicParsing="false" text="About" onAction="#about"/>
+            <MenuItem mnemonicParsing="false" onAction="#about" text="About"/>
         </Menu>
     </MenuBar>
     <GridPane prefHeight="383.0" prefWidth="600.0">
@@ -32,7 +31,7 @@
         <VBox.margin>
             <Insets/>
         </VBox.margin>
-        <MenuButton  maxWidth="103.0" minWidth="103.0" mnemonicParsing="false" text="Select Patient" fx:id="userMenu">
+        <MenuButton fx:id="userMenu" maxWidth="103.0" minWidth="103.0" mnemonicParsing="false" text="Select Patient">
             <items>
             </items>
             <GridPane.margin>
@@ -63,12 +62,12 @@
                 <Insets left="30.0" top="-40.0"/>
             </GridPane.margin>
         </Label>
-        <Label text="Lastname, Firstname" GridPane.columnIndex="1">
+        <Label fx:id="nameLabel" text="Lastname, Firstname" GridPane.columnIndex="1">
             <GridPane.margin>
                 <Insets left="120.0" top="-80.0"/>
             </GridPane.margin>
         </Label>
-        <Label text="##" GridPane.columnIndex="1">
+        <Label fx:id="ageLabel" text="##" GridPane.columnIndex="1">
             <GridPane.margin>
                 <Insets left="120.0" top="-40.0"/>
             </GridPane.margin>
@@ -93,22 +92,22 @@
                 <Insets left="30.0" top="120.0"/>
             </GridPane.margin>
         </Label>
-        <Label text="XX lbs." GridPane.columnIndex="1">
+        <Label fx:id="weightLabel" text="XX lbs." GridPane.columnIndex="1">
             <GridPane.margin>
                 <Insets left="120.0"/>
             </GridPane.margin>
         </Label>
-        <Label text="X' XX&quot;" GridPane.columnIndex="1">
+        <Label fx:id="heightLabel" text="X' XX&quot;" GridPane.columnIndex="1">
             <GridPane.margin>
                 <Insets left="120.0" top="40.0"/>
             </GridPane.margin>
         </Label>
-        <Label text="XX° F" GridPane.columnIndex="1">
+        <Label fx:id="tempLabel" text="XX° F" GridPane.columnIndex="1">
             <GridPane.margin>
                 <Insets left="120.0" top="80.0"/>
             </GridPane.margin>
         </Label>
-        <Label text="XXX / XX" GridPane.columnIndex="1">
+        <Label fx:id="bpLabel" text="XXX / XX" GridPane.columnIndex="1">
             <GridPane.margin>
                 <Insets left="120.0" top="120.0"/>
             </GridPane.margin>
@@ -118,23 +117,26 @@
                 <Insets left="30.0" top="-60.0"/>
             </GridPane.margin>
         </Label>
-        <TextArea editable="false" maxHeight="60.0" minWidth="540.0" text="Nurses Notes.." wrapText="true"
-                  GridPane.rowIndex="1">
+        <TextArea fx:id="nurseNotes" disable="true" editable="false" maxHeight="60.0" minWidth="540.0" text="Nurses Notes.."
+                  wrapText="true" GridPane.rowIndex="1">
             <GridPane.margin>
                 <Insets left="30.0" top="30.0"/>
             </GridPane.margin>
         </TextArea>
-        <Button defaultButton="true" disable="true" mnemonicParsing="false" text="Medical History">
+        <Button fx:id="medicalButton" defaultButton="true" disable="true" mnemonicParsing="false"
+                onAction="#onMedicalButtonClick" text="Medical History">
             <GridPane.margin>
                 <Insets left="150.0" top="30.0"/>
             </GridPane.margin>
         </Button>
-        <Button disable="true" mnemonicParsing="false" text="Messages">
+        <Button fx:id="messagesButton" disable="true" mnemonicParsing="false" onAction="#onMessageButtonClick"
+                text="Messages">
             <GridPane.margin>
                 <Insets left="65.0" top="100.0"/>
             </GridPane.margin>
         </Button>
-        <Button disable="true" mnemonicParsing="false" text="Contact">
+        <Button fx:id="contactButton" disable="true" mnemonicParsing="false" onAction="#onContactButtonClick"
+                text="Contact">
             <GridPane.margin>
                 <Insets left="150.0" top="100.0"/>
             </GridPane.margin>
@@ -144,10 +146,17 @@
                 <Insets left="30.0" top="-120.0"/>
             </GridPane.margin>
         </Label>
-        <TextArea maxHeight="60.0" minWidth="540.0" promptText="Notes.." GridPane.rowIndex="2">
+        <TextArea fx:id="doctorsNotes" disable="true" maxHeight="60.0" minWidth="540.0" promptText="Notes.." GridPane.rowIndex="2">
             <GridPane.margin>
                 <Insets left="30.0" top="-30.0"/>
             </GridPane.margin>
         </TextArea>
+        <Button defaultButton="true" mnemonicParsing="false" text="Save Patient"
+                GridPane.columnIndex="1" GridPane.rowIndex="2"
+                onAction="#onSaveButtonClick" fx:id="saveButton">
+            <GridPane.margin>
+                <Insets left="-40.0" top="80.0"/>
+            </GridPane.margin>
+        </Button>
     </GridPane>
 </VBox>
