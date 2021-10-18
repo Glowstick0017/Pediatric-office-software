@@ -6,6 +6,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.sql.SQLException;
+
+import com.memeteam.cse360project.orm.DatabaseService;
 public class ContactController {
 
     public static String phone;
@@ -23,11 +26,14 @@ public class ContactController {
         ContactController.email = email;
     }
 
-    public void onSaveButtonClick(ActionEvent event) {
+    public void onSaveButtonClick(ActionEvent event) throws SQLException {
         RegisterController.setPhone(phoneField.getText());
         RegisterController.setEmail(emailField.getText());
-        PatientController.setUserPhone(phoneField.getText());
-        PatientController.setUserEmail(emailField.getText());
+        //Patient updates info
+        if (Main.currentUserID != 0){
+            PatientController.setUserPhone(phoneField.getText());
+            PatientController.setUserEmail(emailField.getText());
+        }
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();

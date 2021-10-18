@@ -11,19 +11,26 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.memeteam.cse360project.models.User;
+
 public class MessageController {
 
     public TextArea messageField;
     public Button sendMessageButton;
 
-    public String currentUser;
+    public User currentUser;
+    public int currentUserID;
     public Button cancelButton;
 
-    public void setCurrentUser(String currentUser) {
+    public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
     }
+    
+    public void setCurrentUserID(int id) throws SQLException{
+        this.currentUserID = id;
+    }
 
-    public void onMessageSendButtonClick(ActionEvent event) {
+    public void onMessageSendButtonClick(ActionEvent event) throws SQLException {
         setUserMessage(currentUser);
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
@@ -40,16 +47,10 @@ public class MessageController {
         sendMessageButton.setDisable(false);
     }
 
-    public void setUserMessage(String currentUser) {
+    public void setUserMessage(User currentUser) throws SQLException {
         String message = messageField.getText().replaceAll("'", "''");
-        String sql = "UPDATE patients\n" +
-                "SET message = '" + message + "'\n" +
-                "WHERE username='" + currentUser + "'";
-        try (Connection conn = Main.connect();
-             Statement stmt = conn.createStatement()) {
-            stmt.execute(sql);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        currentUser.setMessage(message);
+
+        Main.DBS.PatientUpdate(currentUser);
     }
 }

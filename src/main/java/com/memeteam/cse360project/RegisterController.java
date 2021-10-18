@@ -11,14 +11,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
-import javax.xml.transform.Result;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
+import java.sql.Date;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.AbstractMap.SimpleEntry;
 
 public class RegisterController {
     public DatePicker dateField;
@@ -36,7 +36,7 @@ public class RegisterController {
     public void onMedicalButtonClick() throws IOException {
         MedicalController.setMedCombo(medCombo);
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("medical.fxml"));
-        Parent root= fxmlLoader.load();
+        Parent root = fxmlLoader.load();
         MedicalController mc = fxmlLoader.getController();
         mc.predefine(medCombo);
         Stage stage = new Stage();
@@ -91,7 +91,7 @@ public class RegisterController {
         }
     }
 
-    public void onRegisterButtonClick(ActionEvent event) throws IOException {
+    public void onRegisterButtonClick(ActionEvent event) throws IOException, SQLException {
         if (userExists(usernameField.getText().toUpperCase(Locale.ROOT))) {
             existsLabel.setVisible(true);
         } else {
@@ -105,49 +105,48 @@ public class RegisterController {
         }
     }
 
-    public boolean userExists(String username) {
-        String sql = "SELECT *\n" +
-                "FROM patients\n" +
-                "WHERE username='" + username + "'";
-        int exists = -1;
-        try (Connection conn = Main.connect();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                exists = rs.getInt("id");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return exists > -1;
+    //Checks if user exists
+    public boolean userExists(String username) throws SQLException {
+        return Main.DBS.GetUserByUsername(username) != null ? true : false;
     }
+    
 
-    public void registerUser() {
-        String sql = "SELECT COUNT(*)\n" +
-                "FROM patients";
-        int id = 0;
-        try (Connection conn = Main.connect();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                id = rs.getInt("COUNT(*)");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        int age = 2021 - dateField.getValue().getYear();
-        sql = "INSERT INTO patients (id, firstname, lastname, age, username, password, medical, phone, email)\n"
-                + "VALUES (" + id + ",'" + firstnameField.getText().replaceAll("'","''") + "','" + lastnameField.getText().replaceAll("'","''") +
-                "'," + age + ",'" + usernameField.getText().toUpperCase(Locale.ROOT).replaceAll("'","''") +
-                "','" + passwordField.getText().replaceAll("'","''") + "','" + medCombo + "','" + phone + "','" + email.replaceAll("'","''") + "');";
-        try (Connection conn = Main.connect();
-             Statement stmt = conn.createStatement()) {
-            stmt.execute(sql);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public void registerUser() throws SQLException{
+        var arrayList = new ArrayList<SimpleEntry<TextField, Boolean>>(); 
+            //cleaner method didn't work so let's just do this instead
+            arrayList.add(new SimpleEntry<TextField, Boolean>(firstnameField, false));
+            arrayList.add(new SimpleEntry<TextField, Boolean>(lastnameField, false));
+            arrayList.add(new SimpleEntry<TextField, Boolean>(usernameField, true));
+            arrayList.add(new SimpleEntry<TextField, Boolean>(passwordField, false));
+            
+
+            Date sqlDate =  Date.valueOf(dateField.getValue());
+            String DateString = sqlDate + " 00:00:00";
+
+        //Adds all of our parameters
+        var stringList = cleanFields(arrayList);
+        //1st param is index (not key), second is the data
+        stringList.add(2, DateString);
+        stringList.add(5, medCombo);
+        stringList.add(6, phone);
+        stringList.add(7, email.replaceAll("'", "''"));
+
+        Main.DBS.registerUser(stringList);
     }
-
+    //Cleans strings in a more clean and readable way
+    public List<String> cleanFields(ArrayList<SimpleEntry<TextField, Boolean>> fields){
+        List<String> fieldsText = new ArrayList<String>();
+        for(SimpleEntry<TextField, Boolean> field : fields){
+            if (field.getValue()){
+                fieldsText.add(field.getKey().getText().toUpperCase().replaceAll("'", "''"));
+            } 
+            else{
+                fieldsText.add(field.getKey().getText().replaceAll("'", "''"));
+            } 
+        }
+        return fieldsText;
+    }
+    
     public void exit(ActionEvent event) {
         MenuItem mi = (MenuItem) event.getSource();
         Window window = mi.getParentPopup().getOwnerWindow();

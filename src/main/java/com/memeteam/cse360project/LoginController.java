@@ -56,20 +56,25 @@ public class LoginController {
         }
     }
 
-    public void onLoginButtonClick(ActionEvent event) throws IOException {
+    //Robbie pls unhard code these pls -Tommy
+
+    public void onLoginButtonClick(ActionEvent event) throws IOException, SQLException {
         // LOG IN CREDENTIAL CHECK LOGIC WILL GO HERE
         if (userExists(usernameField.getText().toUpperCase(Locale.ROOT))) {
             if (validatePassword(usernameField.getText().toUpperCase(Locale.ROOT))) {
                 Main.setCurrentUser(usernameField.getText().toUpperCase(Locale.ROOT));
+                Main.setCurrentID(usernameField.getText());
                 Node source = (Node) event.getSource();
                 Stage stage = (Stage) source.getScene().getWindow();
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("patient.fxml"));
                 Parent root= loader.load();
                 PatientController pc = loader.getController();
-                pc.setName(getName(usernameField.getText().toUpperCase(Locale.ROOT)));
-                pc.setAge(getAge(usernameField.getText().toUpperCase(Locale.ROOT)));
-                pc.setNotes(getNotes(usernameField.getText().toUpperCase(Locale.ROOT)));
-                pc.setCurrentUser(usernameField.getText().toUpperCase(Locale.ROOT));
+                var loggedUser = Main.DBS.GetUserByUsername(usernameField.getText().toUpperCase(Locale.ROOT));
+                pc.setName(loggedUser.getFullName());
+                pc.setAge(Integer.toString(loggedUser.getAge()));
+                pc.setNotes(loggedUser.getDoctornotes());
+                pc.setCurrentUser(loggedUser);
+                pc.setCurrentID(PatientController.currentUser.getId());
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
@@ -87,11 +92,18 @@ public class LoginController {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("doctor.fxml"));
                 Parent root= loader.load();
                 DoctorController dc = loader.getController();
-                for (int i = 0; i <= userCount(); i++) {
+                for (int i = 1; i <= userCount(); i++) {
                     MenuItem mi = new MenuItem();
-                    mi.setText(getNameByID(i));
-                    mi.setId(getUsernameByID(i));
-                    mi.setOnAction(dc::onPatientClick);
+                    var user = Main.DBS.GetUserById(i);
+                    mi.setText(user.getFullName());
+                    mi.setId(Integer.toString(i));
+                    mi.setOnAction(event1 -> {
+                        try {
+                            dc.onPatientClick(event1);
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    });
                     dc.userMenu.getItems().add(mi);
                 }
                 Scene scene = new Scene(root);
@@ -108,11 +120,18 @@ public class LoginController {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("nurse.fxml"));
                 Parent root= loader.load();
                 NurseController nc = loader.getController();
-                for (int i = 0; i <= userCount(); i++) {
+                for (int i = 1; i <= userCount(); i++) {
                     MenuItem mi = new MenuItem();
-                    mi.setText(getNameByID(i));
-                    mi.setId(getUsernameByID(i));
-                    mi.setOnAction(nc::onPatientClick);
+                    var user = Main.DBS.GetUserById(i);
+                    mi.setText(user.getFullName());
+                    mi.setId(Integer.toString(i));
+                    mi.setOnAction(event1 -> {
+                        try {
+                            nc.onPatientClick(event1);
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    });
                     nc.userMenu.getItems().add(mi);
                 }
                 Scene scene = new Scene(root);
@@ -129,153 +148,48 @@ public class LoginController {
             credentialError.setVisible(true);
         }
     }
-
-    private String getUsernameByID(int id) {
-        String sql = "SELECT *\n" +
-                "FROM patients\n" +
-                "WHERE id='" + id + "'";
-        String username = "";
-        try (Connection conn = Main.connect();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                username = rs.getString("username");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return username;
+    //Username by ID
+    private String getUsernameByID(int id) throws SQLException {
+        return Main.DBS.GetUserById(id).getUsername();
     }
-
-    public String getName(String username) {
-        String sql = "SELECT *\n" +
-                "FROM patients\n" +
-                "WHERE username='" + username.replaceAll("'","''") + "'";
-        String firstName = "";
-        String lastName = "";
-        try (Connection conn = Main.connect();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                firstName = rs.getString("firstname");
-                lastName = rs.getString("lastname");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return lastName + ", " + firstName;
+    //Fullname by username
+    public String getName(String username) throws SQLException {
+        return Main.DBS.GetUserByUsername(username).getFullName();
     }
-
-    public String getNameByID(int id) {
-        String sql = "SELECT *\n" +
-                "FROM patients\n" +
-                "WHERE id=" + id;
-        String firstName = "";
-        String lastName = "";
-        try (Connection conn = Main.connect();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                firstName = rs.getString("firstname");
-                lastName = rs.getString("lastname");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return lastName + ", " + firstName;
+    //Fullname by ID
+    public String getNameByID(int id) throws SQLException {
+        return Main.DBS.GetUserById(id).getFullName();
     }
-
-    public String getAge(String username) {
-        String sql = "SELECT *\n" +
-                "FROM patients\n" +
-                "WHERE username='" + username + "'";
-        String age = "";
-        try (Connection conn = Main.connect();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                age = String.valueOf(rs.getInt("age"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return age;
+    //Get Age
+    public int getAge(String username) throws SQLException {
+        return Main.DBS.GetUserByUsername(username).getAge();
     }
-
-    public String getNotes(String username) {
-        String sql = "SELECT *\n" +
-                "FROM patients\n" +
-                "WHERE username='" + username + "'";
-        String notes = "";
-        try (Connection conn = Main.connect();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                notes = rs.getString("doctornotes");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return notes;
+    //Gets the Doctor's Notes
+    public String getNotes(String username) throws SQLException {
+        return Main.DBS.GetUserByUsername(username).getDoctornotes();
     }
-
-    public boolean userExists(String username) {
-        String sql = "SELECT *\n" +
-                "FROM patients\n" +
-                "WHERE username='" + username.replaceAll("'","''") + "'";
-        int exists = -1;
-        try (Connection conn = Main.connect();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                exists = rs.getInt("id");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return exists > -1;
+    //Checks if user exists
+    public boolean userExists(String username) throws SQLException {
+        return Main.DBS.GetUserByUsername(username.toUpperCase(Locale.ROOT)) != null ? true : false;
     }
-
-    public int userCount() {
-        String sql = "SELECT *\n" +
-                "FROM patients";
-        int count = 0;
-        try (Connection conn = Main.connect();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                count = rs.getInt("id");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return count;
+    //Fetch user count
+    public int userCount() throws SQLException {
+        return Main.DBS.GetUserCount();
     }
-
-    public boolean validatePassword(String username) {
-        String sql = "SELECT *\n" +
-                "FROM patients\n" +
-                "WHERE username='" + username.replaceAll("'","''") + "'";
-        String password = "";
-        try (Connection conn = Main.connect();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                password = rs.getString("password");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    //Password validation
+    public boolean validatePassword(String username) throws SQLException {
+        var user = Main.DBS.GetUserByUsername(username.replaceAll("'","''"));
+        String password = user.getPassword();
         return password.equals(passwordField.getText());
     }
-
+    //Exit application
     public void exit(ActionEvent event) {
         MenuItem mi = (MenuItem) event.getSource();
         Window window = mi.getParentPopup().getOwnerWindow();
         Stage stage = (Stage) window;
         stage.close();
     }
-
+    //About page
     public void about(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("about.fxml"));
         Stage stage = new Stage();

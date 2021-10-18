@@ -13,4 +13,5 @@ module com.memeteam.cse360project {
 
     opens com.memeteam.cse360project to javafx.fxml;
     exports com.memeteam.cse360project;
+    exports com.memeteam.cse360project.orm;
 }

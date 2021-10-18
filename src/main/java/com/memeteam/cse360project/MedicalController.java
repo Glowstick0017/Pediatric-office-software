@@ -1,15 +1,13 @@
 package com.memeteam.cse360project;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.RadioButton;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.sql.SQLException;
 
 public class MedicalController {
 
@@ -38,9 +36,11 @@ public class MedicalController {
     public static String medCombo = "000000000000000000000";
     public Button submitButton;
 
-    public void onSubmitButtonClick(ActionEvent event) {
+    public void onSubmitButtonClick(ActionEvent event) throws SQLException {
         RegisterController.setMedCombo(medCombo);
-        PatientController.setUserMedCombo(medCombo);
+        if (Main.currentUserID != 0){
+            PatientController.setUserMedCombo(medCombo);
+        }
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();

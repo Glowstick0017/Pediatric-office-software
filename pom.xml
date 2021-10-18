@@ -13,8 +13,58 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.7.1</junit.version>
     </properties>
-
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.4.RELEASE</version>
+    </parent>
     <dependencies>
+
+        <dependency>
+            <groupId>hu.blackbelt.karaf.features</groupId>
+            <artifactId>javax</artifactId>
+            <version>1.0.2</version>
+            <type>pom</type>
+        </dependency>
+
+        <dependency>
+            <groupId>hu.blackbelt.karaf.features</groupId>
+            <artifactId>javax</artifactId>
+            <version>1.0.2</version>
+            <type>pom</type>
+        </dependency>
+
+        <dependency>
+            <groupId>hu.blackbelt.karaf.features</groupId>
+            <artifactId>javax</artifactId>
+            <version>1.0.2</version>
+            <type>pom</type>
+        </dependency>
+
+
+        <dependency>
+            <groupId>hu.blackbelt.karaf.features</groupId>
+            <artifactId>javax</artifactId>
+            <version>1.0.2</version>
+            <type>pom</type>
+        </dependency>
+
+
+        <dependency>
+            <groupId>hu.blackbelt.karaf.features</groupId>
+            <artifactId>javax</artifactId>
+            <version>1.0.2</version>
+            <type>pom</type>
+        </dependency>
+
+
+        <dependency>
+            <groupId>hu.blackbelt.karaf.features</groupId>
+            <artifactId>javax</artifactId>
+            <version>1.0.2</version>
+            <type>pom</type>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc -->
         <dependency>
             <groupId>org.xerial</groupId>

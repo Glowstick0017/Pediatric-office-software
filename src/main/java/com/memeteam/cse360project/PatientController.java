@@ -16,15 +16,21 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Calendar;
+import java.util.Locale;
 import java.util.Objects;
+
+import com.memeteam.cse360project.models.User;
 
 public class PatientController {
 
     public TextArea notesField;
     public Label nameField;
     public Label ageField;
-    public static String currentUser;
+    public static User currentUser;
+    public static int currentUserID;
 
+    /* Sets thelabels */
     public void setName(String name) {
         nameField.setText(name);
     }
@@ -37,149 +43,85 @@ public class PatientController {
         notesField.setText(notes);
     }
 
-    public void setCurrentUser(String cu) {
+    public void setCurrentUser(User cu) throws SQLException {
         currentUser = cu;
     }
+    public void setCurrentID(int id) throws SQLException {
+        currentUserID = id;
+    }
 
-    public void onEditMedicalButtonClick(ActionEvent event) throws IOException {
-        MedicalController.setMedCombo(getUserMedcombo(currentUser));
+    public void onEditMedicalButtonClick(ActionEvent event) throws IOException, SQLException {
+        MedicalController.setMedCombo(currentUser.getMedical());
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("medical.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(fxmlLoader.load()));
         MedicalController mc = fxmlLoader.getController();
-        mc.predefine(getUserMedcombo(currentUser));
+        mc.predefine(currentUser.getMedical());
         stage.setAlwaysOnTop(true);
         stage.getIcons().add(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("med.png"))));
         stage.showAndWait();
     }
 
-    public void onEditContactButtonClick(ActionEvent event) throws IOException {
-        ContactController.setEmail(getUserEmail(currentUser));
-        ContactController.setPhone(getUserPhone(currentUser));
+    public void onEditContactButtonClick(ActionEvent event) throws IOException, SQLException {
+        ContactController.setEmail(currentUser.getEmail());
+        ContactController.setPhone(currentUser.getPhone());
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("contact.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(fxmlLoader.load()));
         ContactController cc = fxmlLoader.getController();
-        cc.predefine(getUserPhone(currentUser), getUserEmail(currentUser));
+        cc.predefine(currentUser.getPhone(), currentUser.getEmail());
         stage.setAlwaysOnTop(true);
         stage.getIcons().add(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("med.png"))));
         stage.showAndWait();
     }
 
-    public String getUserPhone(String username) {
-        String sql = "SELECT phone\n" +
-                "FROM patients\n" +
-                "WHERE username='" + username + "'";
-        String phone = "";
-        try (Connection conn = Main.connect();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                phone = rs.getString("phone");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return phone;
+    public String getUserPhone(String username) throws SQLException {
+        return Main.DBS.GetUserByUsername(username).getPhone();
     }
 
-    public String getUserEmail(String username) {
-        String sql = "SELECT email\n" +
-                "FROM patients\n" +
-                "WHERE username='" + username + "'";
-        String email = "";
-        try (Connection conn = Main.connect();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                email = rs.getString("email");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return email;
+    public String getUserEmail(String username) throws SQLException {
+        return Main.DBS.GetUserByUsername(username).getEmail();
     }
 
-    public static void setUserPhone(String phone) {
-        String sql = "UPDATE patients\n" +
-                "SET phone = '" + phone + "'\n" +
-                "WHERE username='" + currentUser + "'";
-        try (Connection conn = Main.connect();
-             Statement stmt = conn.createStatement()) {
-            stmt.execute(sql);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public static void setUserPhone(String phone) throws SQLException {
+        currentUser.setPhone(phone);
+        Main.DBS.PatientUpdate(currentUser);
     }
 
-    public static void setUserEmail(String email) {
-        String sql = "UPDATE patients\n" +
-                "SET email = '" + email.replaceAll("'","''") + "'\n" +
-                "WHERE username='" + currentUser + "'";
-        try (Connection conn = Main.connect();
-             Statement stmt = conn.createStatement()) {
-            stmt.execute(sql);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public static void setUserEmail(String email) throws SQLException {
+        currentUser.setEmail(email);
+        Main.DBS.PatientUpdate(currentUser);
     }
 
-    public static void setUserMedCombo(String medcombo) {
-        String sql = "UPDATE patients\n" +
-                "SET medical = '" + medcombo + "'\n" +
-                "WHERE username='" + currentUser + "'";
-        try (Connection conn = Main.connect();
-             Statement stmt = conn.createStatement()) {
-            stmt.execute(sql);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public static void setUserMedCombo(String medcombo) throws SQLException {
+        currentUser.setMedical(medcombo);
+        Main.DBS.PatientUpdate(currentUser);
     }
 
-    public String getUserMedcombo(String username) {
-        String sql = "SELECT medical\n" +
-                "FROM patients\n" +
-                "WHERE username='" + username + "'";
-        String medCombo = "";
-        try (Connection conn = Main.connect();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                medCombo = rs.getString("medical");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return medCombo;
+    public String getUserMedcombo(String username) throws SQLException {
+        return Main.DBS.GetUserByUsername(username).getMedical();
     }
 
-    public void onSendMessageButtonClick(ActionEvent event) throws IOException {
+    public void onSendMessageButtonClick(ActionEvent event) throws IOException, SQLException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("message.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(fxmlLoader.load()));
         MessageController mc = fxmlLoader.getController();
         mc.setCurrentUser(currentUser);
-        mc.messageField.setText(getUserMessage(currentUser));
+        mc.setCurrentUserID(currentUserID);
+        mc.messageField.setText(Integer.toString(convertAge()));
         stage.setAlwaysOnTop(true);
         stage.getIcons().add(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("med.png"))));
         stage.showAndWait();
     }
 
-    public String getUserMessage(String username) {
-        String sql = "SELECT message\n" +
-                "FROM patients\n" +
-                "WHERE username='" + username + "'";
-        String message = "";
-        try (Connection conn = Main.connect();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                message = rs.getString("message");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return message;
+    public int convertAge(){
+        java.sql.Date currentDate = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+        return (currentDate.getYear() - currentUser.getBirthday().getYear());
+    }
+
+    public String getUserMessage(String username) throws SQLException {
+        return Main.DBS.GetUserByUsername(username).getMessage();
     }
 
     public void exit(ActionEvent event) {
