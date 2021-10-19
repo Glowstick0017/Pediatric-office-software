@@ -145,7 +145,7 @@ public class DatabaseService {
         return data.get(0);
     }
 
-    public int convertAge(ResultSet rs) throws SQLException{
+    public int ConvertAge(ResultSet rs) throws SQLException{
         java.sql.Date currentDate = new java.sql.Date(Calendar.getInstance().getTime().getTime());
         return (currentDate.getYear() - rs.getDate("birthday").getYear());
     }
@@ -157,7 +157,7 @@ public class DatabaseService {
             user.setId(rs.getInt("id"));
             user.setFirstName(rs.getString("firstname"));
             user.setLastName(rs.getString("lastname"));
-            user.setAge(convertAge(rs));
+            user.setAge(ConvertAge(rs));
             user.setBirthday(rs.getDate("birthday"));
             user.setUsername(rs.getString("username"));
             user.setPassword(rs.getString("password"));
@@ -246,7 +246,7 @@ public class DatabaseService {
     }
 
     //For users to update their own email and password
-    public void userUpdate(User user) throws SQLException{
+    public void UserUpdate(User user) throws SQLException{
         //Create our SQL query
         String sql = "UPDATE users SET email = ?, password = ?, phone = ?, medical = ?, message = ? WHERE id = ?";
         //Create a list to hold our parameters in
@@ -256,6 +256,6 @@ public class DatabaseService {
         //Adds all of our parameters
         pars.addAll(userPars);
         //Fetch all of our data
-        Get(sql, pars, this._userParser);
+        Exec(sql, pars);
     }
 }

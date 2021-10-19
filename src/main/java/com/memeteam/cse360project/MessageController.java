@@ -50,7 +50,6 @@ public class MessageController {
     public void setUserMessage(User currentUser) throws SQLException {
         String message = messageField.getText().replaceAll("'", "''");
         currentUser.setMessage(message);
-
-        Main.DBS.PatientUpdate(currentUser);
+        Main.DBS.UserUpdate(currentUser);
     }
 }

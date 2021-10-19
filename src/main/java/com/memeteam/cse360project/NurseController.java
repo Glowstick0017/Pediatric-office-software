@@ -35,6 +35,31 @@ public class NurseController {
     public User currentUser; //Pulls the full user
     public Button saveButton;
 
+private static final String EMPTY_STRING = "";
+
+private String ParseString(String string){
+    if (string.equals("0") || string.equals("null") || string.equals("0.0")){
+        return EMPTY_STRING;
+    }
+    else return string;
+}
+
+private void PopulateLabels(){
+    String age = ParseString(Integer.toString(currentUser.getAge()));
+    String weight = ParseString(Integer.toString(currentUser.getWeight()));
+    String height = ParseString(currentUser.getHeight());
+    String bp = ParseString(Integer.toString(currentUser.getBloodpressure()));
+    String temp = ParseString(Float.toString(currentUser.getTemperature()));
+    String nursenotes = ParseString(currentUser.getNursenotes());
+
+    ageLabel.setText(age);
+    weightField.setText(weight);
+    heightField.setText(height);
+    bpField.setText(bp);
+    tempField.setText(temp);
+    notesText.setText(nursenotes);
+}
+
     public void onPatientClick(ActionEvent event) throws SQLException {
         notesText.setDisable(false);
         MenuItem mi = (MenuItem) event.getSource();
@@ -45,17 +70,7 @@ public class NurseController {
         messagesButton.setDisable(false);
         contactButton.setDisable(false);
         nameLabel.setText(mi.getText());
-        ageLabel.setText(Integer.toString(convertAge()));
-        weightField.setText(Integer.toString(currentUser.getWeight()));
-        heightField.setText(currentUser.getHeight());
-        bpField.setText(Integer.toString(currentUser.getBloodpressure()));
-        tempField.setText(Float.toString(currentUser.getTemperature()));
-        notesText.setText(getUserNurseNotes());
-    }
-
-    public int convertAge(){
-        java.sql.Date currentDate = new java.sql.Date(Calendar.getInstance().getTime().getTime());
-        return (currentDate.getYear() - currentUser.getBirthday().getYear());
+        PopulateLabels();
     }
 
     /* Getters */ // These are kinda pointless because you don't need to hit the database for every label, just pull the full profile

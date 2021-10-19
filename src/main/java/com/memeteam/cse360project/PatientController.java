@@ -12,12 +12,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Calendar;
-import java.util.Locale;
 import java.util.Objects;
 
 import com.memeteam.cse360project.models.User;
@@ -75,6 +70,7 @@ public class PatientController {
         stage.showAndWait();
     }
 
+    /* Use these getters if you're only needing one variable at one time */
     public String getUserPhone(String username) throws SQLException {
         return Main.DBS.GetUserByUsername(username).getPhone();
     }
@@ -109,15 +105,10 @@ public class PatientController {
         MessageController mc = fxmlLoader.getController();
         mc.setCurrentUser(currentUser);
         mc.setCurrentUserID(currentUserID);
-        mc.messageField.setText(Integer.toString(convertAge()));
+        mc.messageField.setText(currentUser.getMessage());
         stage.setAlwaysOnTop(true);
         stage.getIcons().add(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("med.png"))));
         stage.showAndWait();
-    }
-
-    public int convertAge(){
-        java.sql.Date currentDate = new java.sql.Date(Calendar.getInstance().getTime().getTime());
-        return (currentDate.getYear() - currentUser.getBirthday().getYear());
     }
 
     public String getUserMessage(String username) throws SQLException {

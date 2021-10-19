@@ -5,9 +5,8 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-import java.sql.*;
-
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -43,7 +42,7 @@ public class Main extends Application {
         launch();
     }
 
-    //Kinda janky but it works
+    //Kinda janky but it works 
     public static void setCurrentUser(String cu) {
         currentUser = cu;
     }
