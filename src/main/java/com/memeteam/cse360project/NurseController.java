@@ -38,20 +38,20 @@ public class NurseController {
 private static final String EMPTY_STRING = "";
 
 private String ParseString(String string){
-    if (string.equals("0") || string.equals("null") || string.equals("0.0")){
+    if (string.equals("0") || string.equals("null") || string.equals("0.0") || string.equals("") || string.isBlank() || string.isEmpty()){
         return EMPTY_STRING;
     }
     else return string;
 }
 
 private void PopulateLabels(){
+    System.out.println("Age: " + currentUser.getAge());
     String age = ParseString(Integer.toString(currentUser.getAge()));
     String weight = ParseString(Integer.toString(currentUser.getWeight()));
-    String height = ParseString(currentUser.getHeight());
+    String height = ParseString(String.valueOf(currentUser.getHeight()));
     String bp = ParseString(Integer.toString(currentUser.getBloodpressure()));
     String temp = ParseString(Float.toString(currentUser.getTemperature()));
-    String nursenotes = ParseString(currentUser.getNursenotes());
-
+    String nursenotes = ParseString(String.valueOf(currentUser.getNursenotes()));
     ageLabel.setText(age);
     weightField.setText(weight);
     heightField.setText(height);

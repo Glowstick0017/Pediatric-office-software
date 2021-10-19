@@ -14,7 +14,7 @@ import com.memeteam.cse360project.orm.*;
 
 public class Main extends Application {
     private static String currentUser;
-    static int currentUserID;
+    public static int currentUserID;
     private static final String url = "jdbc:sqlite:database.db";
     public static DatabaseService DBS;
     @Override //JavaFX init parameters
