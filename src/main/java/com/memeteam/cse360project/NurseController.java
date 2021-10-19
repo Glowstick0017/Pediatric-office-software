@@ -42,12 +42,11 @@ private String ParseString(String string){
 }
 
 private void PopulateLabels(){
-    System.out.println("Age: " + currentUser.getAge());
     String age = ParseString(Integer.toString(currentUser.getAge()));
-    String weight = ParseString(Integer.toString(currentUser.getWeight()));
+    String weight = ParseString(Integer.toString(currentUser.getWeight())) + " lbs";
     String height = ParseString(String.valueOf(currentUser.getHeight()));
     String bp = ParseString(String.valueOf(currentUser.getBloodpressure()));
-    String temp = ParseString(Float.toString(currentUser.getTemperature()));
+    String temp = ParseString(Float.toString(currentUser.getTemperature()) + " °F");
     String nursenotes = ParseString(String.valueOf(currentUser.getNursenotes()));
     ageLabel.setText(age);
     weightField.setText(weight);
@@ -168,10 +167,10 @@ private void PopulateLabels(){
     //Update button
     public void onSaveButtonClick(ActionEvent event) throws SQLException {
         //Change current users info
-        currentUser.setWeight(Integer.parseInt(weightField.getText()));
+        currentUser.setWeight(Integer.parseInt(weightField.getText().replaceAll(" lbs","")));
         currentUser.setHeight(heightField.getText());
         currentUser.setBloodpressure(bpField.getText());
-        currentUser.setTemperature(Float.parseFloat(tempField.getText()));
+        currentUser.setTemperature(Float.parseFloat(tempField.getText().replaceAll(" °F","")));
         currentUser.setNursenotes(notesText.getText().replaceAll("'","''"));
 
         //Push updated user

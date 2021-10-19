@@ -44,10 +44,10 @@ public class DoctorController {
     
     private void PopulateLabels(){
         String age = ParseString(Integer.toString(currentUser.getAge()));
-        String weight = ParseString(Integer.toString(currentUser.getWeight()));
+        String weight = ParseString(Integer.toString(currentUser.getWeight())) + " lbs";
         String height = ParseString(String.valueOf(currentUser.getHeight()));
         String bp = ParseString(String.valueOf(currentUser.getBloodpressure()));
-        String temp = ParseString(Float.toString(currentUser.getTemperature()));
+        String temp = ParseString(Float.toString(currentUser.getTemperature()) + " °F");
         String nursenotes = ParseString(String.valueOf(currentUser.getNursenotes()));
         String docnotes = ParseString(String.valueOf(currentUser.getDoctornotes()));
 
