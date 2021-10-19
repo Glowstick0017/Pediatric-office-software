@@ -21,7 +21,7 @@ public class User {
     private int _weight;
     private String _height;
     private float _temperature;
-    private int _bloodpressure;
+    private String _bloodpressure;
     private String _nursenotes;
     private String _doctornotes;
 
@@ -138,11 +138,11 @@ public class User {
 		this._temperature = _temperature;
 	}
 
-	public int getBloodpressure() {
+	public String getBloodpressure() {
 		return this._bloodpressure;
 	}
 
-	public void setBloodpressure(int _bloodpressure) {
+	public void setBloodpressure(String _bloodpressure) {
 		this._bloodpressure = _bloodpressure;
 	}
 

@@ -168,7 +168,7 @@ public class DatabaseService {
             user.setWeight(rs.getInt("weight"));
             user.setHeight(rs.getString("height"));
             user.setTemperature(rs.getFloat("temperature"));
-            user.setBloodpressure(rs.getInt("bloodpressure"));
+            user.setBloodpressure(rs.getString("bloodpressure"));
             user.setNursenotes(rs.getString("nursenotes"));
             user.setDoctornotes(rs.getString("doctornotes"));
             //user.setType(rs.getInt("type"));
@@ -223,7 +223,7 @@ public class DatabaseService {
                 + "	weight int,\n"
                 + "	height text,\n"
                 + "	temperature float,\n"
-                + "	bloodpressure int,\n"
+                + "	bloodpressure text,\n"
                 + "	nursenotes text,\n"
                 + "	doctornotes text\n"
                 + ");";

@@ -46,7 +46,7 @@ private void PopulateLabels(){
     String age = ParseString(Integer.toString(currentUser.getAge()));
     String weight = ParseString(Integer.toString(currentUser.getWeight()));
     String height = ParseString(String.valueOf(currentUser.getHeight()));
-    String bp = ParseString(Integer.toString(currentUser.getBloodpressure()));
+    String bp = ParseString(String.valueOf(currentUser.getBloodpressure()));
     String temp = ParseString(Float.toString(currentUser.getTemperature()));
     String nursenotes = ParseString(String.valueOf(currentUser.getNursenotes()));
     ageLabel.setText(age);
@@ -170,7 +170,7 @@ private void PopulateLabels(){
         //Change current users info
         currentUser.setWeight(Integer.parseInt(weightField.getText()));
         currentUser.setHeight(heightField.getText());
-        currentUser.setBloodpressure(Integer.parseInt(bpField.getText()));
+        currentUser.setBloodpressure(bpField.getText());
         currentUser.setTemperature(Float.parseFloat(tempField.getText()));
         currentUser.setNursenotes(notesText.getText().replaceAll("'","''"));
 

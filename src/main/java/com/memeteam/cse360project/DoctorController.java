@@ -46,7 +46,7 @@ public class DoctorController {
         String age = ParseString(Integer.toString(currentUser.getAge()));
         String weight = ParseString(Integer.toString(currentUser.getWeight()));
         String height = ParseString(String.valueOf(currentUser.getHeight()));
-        String bp = ParseString(Integer.toString(currentUser.getBloodpressure()));
+        String bp = ParseString(String.valueOf(currentUser.getBloodpressure()));
         String temp = ParseString(Float.toString(currentUser.getTemperature()));
         String nursenotes = ParseString(String.valueOf(currentUser.getNursenotes()));
         String docnotes = ParseString(String.valueOf(currentUser.getDoctornotes()));
