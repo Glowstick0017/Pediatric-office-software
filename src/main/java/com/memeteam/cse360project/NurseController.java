@@ -6,14 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.input.InputMethodEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Calendar;
 import java.util.Objects;
 
 import com.memeteam.cse360project.models.User;
@@ -73,47 +70,6 @@ private void PopulateLabels(){
         PopulateLabels();
     }
 
-    /* Getters */ // These are kinda pointless because you don't need to hit the database for every label, just pull the full profile
-    public int getUserAge() throws SQLException {
-        return Main.DBS.GetUserById(currentUserID).getAge();
-    }
-
-    public int getUserWeight() throws SQLException {
-        return Main.DBS.GetUserById(currentUserID).getWeight();
-    }
-
-    public String getUserHeight() throws SQLException {
-        return Main.DBS.GetUserById(currentUserID).getHeight();
-    }
-
-    public int getUserbp() throws SQLException {
-        return Main.DBS.GetUserById(currentUserID).getBloodpressure();
-    }
-
-    public float getUserTemp() throws SQLException {
-        return Main.DBS.GetUserById(currentUserID).getTemperature();
-    }
-
-    public String getUserNurseNotes() throws SQLException {
-        return Main.DBS.GetUserById(currentUserID).getNursenotes();
-    }
-    
-    public String getUserPhone(int id) throws SQLException {
-        return Main.DBS.GetUserById(id).getPhone();
-    }
-
-    public String getUserEmail(int id) throws SQLException {
-        return Main.DBS.GetUserById(id).getEmail();
-    }
-
-    public String getUserMedcombo(int id) throws SQLException {
-        return Main.DBS.GetUserById(id).getMedical();
-    }
-
-    public String getUserMessage(int id) throws SQLException {
-        return Main.DBS.GetUserById(id).getMessage();
-    }
-
     /* Button Click Event Handlers */
     public void exit(ActionEvent event) {
         MenuItem mi = (MenuItem) event.getSource();
@@ -143,12 +99,12 @@ private void PopulateLabels(){
     }
 
     public void onMedicalButtonClick(ActionEvent event) throws IOException, SQLException {
-        MedicalController.setMedCombo(getUserMedcombo(currentUserID));
+        MedicalController.setMedCombo(currentUser.getMedical());
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("medical.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(fxmlLoader.load()));
         MedicalController mc = fxmlLoader.getController();
-        mc.predefine(getUserMedcombo(currentUserID));
+        mc.predefine(currentUser.getMedical());
         mc.submitButton.setText("OK");
         mc.ardsRadio.setDisable(true);
         mc.anginaRadio.setDisable(true);
@@ -177,13 +133,13 @@ private void PopulateLabels(){
     }
 
     public void onContactButtonClick(ActionEvent event) throws IOException, SQLException {
-        ContactController.setEmail(getUserEmail(currentUserID));
-        ContactController.setPhone(getUserPhone(currentUserID));
+        ContactController.setEmail(currentUser.getEmail());
+        ContactController.setPhone(currentUser.getPhone());
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("contact.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(fxmlLoader.load()));
         ContactController cc = fxmlLoader.getController();
-        cc.predefine(getUserPhone(currentUserID), getUserEmail(currentUserID));
+        cc.predefine(currentUser.getPhone(), currentUser.getEmail());
         cc.phoneField.setEditable(false);
         cc.emailField.setEditable(false);
         cc.cancelButton.setText("OK");
@@ -200,7 +156,7 @@ private void PopulateLabels(){
         MessageController mc = fxmlLoader.getController();
         mc.setCurrentUser(currentUser);
         mc.setCurrentUserID(currentUserID);
-        mc.messageField.setText(getUserMessage(currentUserID));
+        mc.messageField.setText(currentUser.getMessage());
         mc.messageField.setEditable(false);
         mc.sendMessageButton.setVisible(false);
         mc.cancelButton.setText("OK");

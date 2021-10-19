@@ -47,11 +47,11 @@ public class DoctorController {
     private void PopulateLabels(){
         String age = ParseString(Integer.toString(currentUser.getAge()));
         String weight = ParseString(Integer.toString(currentUser.getWeight()));
-        String height = ParseString(currentUser.getHeight());
+        String height = ParseString(String.valueOf(currentUser.getHeight()));
         String bp = ParseString(Integer.toString(currentUser.getBloodpressure()));
         String temp = ParseString(Float.toString(currentUser.getTemperature()));
-        String nursenotes = ParseString(currentUser.getNursenotes());
-        String docnotes = ParseString(currentUser.getDoctornotes());
+        String nursenotes = ParseString(String.valueOf(currentUser.getNursenotes()));
+        String docnotes = ParseString(String.valueOf(currentUser.getDoctornotes()));
 
         ageLabel.setText(age);
         weightLabel.setText(weight);
@@ -74,51 +74,6 @@ public class DoctorController {
         contactButton.setDisable(false);
         nameLabel.setText(mi.getText());
         PopulateLabels();
-    }
-
-    /* Getters */ // These are kinda pointless because you don't need to hit the database for every label, just pull the full profile
-    public int getUserAge() throws SQLException {
-        return Main.DBS.GetUserById(currentUserID).getAge();
-    }
-
-    public int getUserWeight() throws SQLException {
-        return Main.DBS.GetUserById(currentUserID).getWeight();
-    }
-
-    public String getUserHeight() throws SQLException {
-        return Main.DBS.GetUserById(currentUserID).getHeight();
-    }
-
-    public int getUserbp() throws SQLException {
-        return Main.DBS.GetUserById(currentUserID).getBloodpressure();
-    }
-
-    public float getUserTemp() throws SQLException {
-        return Main.DBS.GetUserById(currentUserID).getTemperature();
-    }
-
-    public String getUserNurseNotes() throws SQLException {
-        return Main.DBS.GetUserById(currentUserID).getNursenotes();
-    }
-
-    public String getUserDoctorsNotes() throws SQLException {
-        return Main.DBS.GetUserById(currentUserID).getDoctornotes();
-    }
-
-    public String getUserMedcombo(String username) throws SQLException {
-        return Main.DBS.GetUserByUsername(username).getMedical();
-    }
-
-    public String getUserMessage(String username) throws SQLException {
-        return Main.DBS.GetUserByUsername(username).getMessage();
-    }
-    
-    public String getUserPhone(String username) throws SQLException {
-        return Main.DBS.GetUserByUsername(username).getPhone();
-    }
-
-    public String getUserEmail(String username) throws SQLException {
-        return Main.DBS.GetUserByUsername(username).getEmail();
     }
 
     /* Button Click Event Handlers */
