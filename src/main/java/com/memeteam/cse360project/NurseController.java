@@ -184,7 +184,7 @@ private void PopulateLabels(){
         currentUser.setBloodpressure(bpField.getText());
         currentUser.setTemperature(Float.parseFloat(tempField.getText().replaceAll("[^\\d.]", "")));
         currentUser.setNursenotes(notesText.getText().replaceAll("'","''"));
-
+        currentUser.setDoctornotes(ParseString(currentUser.getDoctornotes()));
         //Push updated user
         Main.DBS.PatientUpdate(currentUser);
     }
