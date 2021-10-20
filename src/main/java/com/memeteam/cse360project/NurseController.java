@@ -174,11 +174,15 @@ private void PopulateLabels(){
 
     //Update button
     public void onSaveButtonClick(ActionEvent event) throws SQLException {
+
+        weightField.setText(weightField.getText().replaceAll("[^\\d.]", "") + " lbs");
+        tempField.setText(tempField.getText().replaceAll("[^\\d.]", "") + " °F");
+
         //Change current users info
-        currentUser.setWeight(Integer.parseInt(weightField.getText().replaceAll(" lbs","")));
+        currentUser.setWeight(Integer.parseInt(weightField.getText().replaceAll("[^\\d.]", "")));
         currentUser.setHeight(heightField.getText());
         currentUser.setBloodpressure(bpField.getText());
-        currentUser.setTemperature(Float.parseFloat(tempField.getText().replaceAll(" °F","")));
+        currentUser.setTemperature(Float.parseFloat(tempField.getText().replaceAll("[^\\d.]", "")));
         currentUser.setNursenotes(notesText.getText().replaceAll("'","''"));
 
         //Push updated user
