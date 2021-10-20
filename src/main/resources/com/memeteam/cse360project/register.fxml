@@ -57,12 +57,11 @@
                 <Insets left="-20.0" top="-80.0"/>
             </GridPane.margin>
         </TextField>
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date of birth:" GridPane.columnIndex="1"
-              GridPane.rowIndex="1">
+        <Label layoutX="200.0" layoutY="120.0" text="Date of Birth:" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <GridPane.margin>
-                <Insets left="-110.0"/>
+                <Insets left="-110.0" top="0.0"/>
             </GridPane.margin>
-        </Text>
+        </Label>
         <DatePicker fx:id="dateField" maxWidth="130.0" promptText="MM/DD/YYYY" GridPane.columnIndex="1"
                     GridPane.rowIndex="1">
             <GridPane.margin>
