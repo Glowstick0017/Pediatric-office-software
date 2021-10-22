@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -25,6 +26,7 @@ public class LoginController {
     public PasswordField passwordField;
     public Button registerButton;
     public Label credentialError;
+    public TextField passwordRevealedField;
 
     @FXML
     protected void onRegisterButtonClick(ActionEvent event) throws IOException {
@@ -208,5 +210,17 @@ public class LoginController {
         GameController gameController = fxmlLoader.getController();
         stage.setOnHidden(e -> gameController.shutdown());
         gameController.clicksPerSecond();
+    }
+
+    public void onShowPass() {
+        passwordField.setVisible(false);
+        passwordRevealedField.setVisible(true);
+        passwordRevealedField.setText(passwordField.getText());
+    }
+
+    public void onHidePass() {
+        passwordField.setVisible(true);
+        passwordRevealedField.setVisible(false);
+        passwordField.setText(passwordRevealedField.getText());
     }
 }
