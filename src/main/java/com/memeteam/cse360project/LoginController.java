@@ -206,6 +206,7 @@ public class LoginController {
         stage.getIcons().add(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("med.png"))));
         stage.show();
         GameController gameController = fxmlLoader.getController();
+        stage.setOnHidden(e -> gameController.shutdown());
         gameController.clicksPerSecond();
     }
 }

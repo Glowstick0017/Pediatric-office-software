@@ -18,6 +18,8 @@ public class GameController {
     public int accidents;
     public int tylenolPrice = 10;
 
+    public boolean shutdown = false;
+
     public void onWheelchairClick(MouseEvent mouseEvent) {
         accidents = Integer.parseInt(accidentCount.getText());
         accidentCount.setText(String.valueOf(accidents+1));
@@ -45,7 +47,6 @@ public class GameController {
             int delay = 0;
             int period = 1000; // repeat every sec.
             Timer timer = new Timer();
-
             timer.scheduleAtFixedRate(new TimerTask() {
                 public void run() {
                     Platform.runLater(() -> {
@@ -55,9 +56,17 @@ public class GameController {
                             accidentCount.setText(String.valueOf(accidents));
                             tylenolButton.setDisable(accidents < tylenolPrice);
                         }
+                        if (shutdown) {
+                            Thread.currentThread().interrupt();
+                            timer.cancel();
+                        }
                     });
                 }
             }, delay, period);
         }).start();
+    }
+
+    public void shutdown() {
+        shutdown=true;
     }
 }
