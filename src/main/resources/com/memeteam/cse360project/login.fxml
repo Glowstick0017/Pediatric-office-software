@@ -17,7 +17,7 @@
             <MenuItem mnemonicParsing="false" onAction="#about" text="About"/>
         </Menu>
     </MenuBar>
-    <GridPane prefHeight="377.0" prefWidth="600.0">
+    <GridPane prefHeight="377.0" prefWidth="600.0" style="-fx-background-color: #262626;">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
@@ -34,47 +34,50 @@
             </GridPane.margin>
             <Image url="@med.png"/>
         </ImageView>
-        <Label text="Username:" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <Label text="Username:" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <GridPane.margin>
                 <Insets left="-110.0" top="-60.0"/>
             </GridPane.margin>
         </Label>
-        <Label text="Password:" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <Label text="Password:" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <GridPane.margin>
                 <Insets left="-110.0" top="20.0"/>
             </GridPane.margin>
         </Label>
         <TextField fx:id="usernameField" maxWidth="150.0" onKeyPressed="#onUsernameInputChange"
-                   promptText="username.." GridPane.columnIndex="1" GridPane.rowIndex="1">
+                   promptText="username.." GridPane.columnIndex="1" GridPane.rowIndex="1"
+                   style="-fx-background-color: #1d1d1d; -fx-text-fill: white;">
             <GridPane.margin>
                 <Insets left="-40.0" top="-60.0"/>
             </GridPane.margin>
         </TextField>
         <PasswordField fx:id="passwordField" maxWidth="150.0" onKeyPressed="#onPasswordInputChange"
-                       promptText="password.." GridPane.columnIndex="1" GridPane.rowIndex="1">
+                       promptText="password.." GridPane.columnIndex="1" GridPane.rowIndex="1"
+                       style="-fx-background-color: #1d1d1d; -fx-text-fill: white;">
             <GridPane.margin>
                 <Insets left="-40.0" top="20.0"/>
             </GridPane.margin>
         </PasswordField>
         <TextField fx:id="passwordRevealedField" maxWidth="150.0" visible="false" GridPane.columnIndex="1"
-                   GridPane.rowIndex="1">
+                   GridPane.rowIndex="1" style="-fx-background-color: #1d1d1d; -fx-text-fill: white;">
             <GridPane.margin>
                 <Insets left="-40.0" top="20.0"/>
             </GridPane.margin>
         </TextField>
         <Button fx:id="registerButton" defaultButton="true" mnemonicParsing="false" onAction="#onRegisterButtonClick"
-                text="Register" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                text="Register" GridPane.columnIndex="1" GridPane.rowIndex="1" style="-fx-background-color: transparent; -fx-border-color: #0177fb; -fx-border-radius: 5;"
+                textFill="#0177fb">
             <GridPane.margin>
                 <Insets left="-80.0" top="120.0"/>
             </GridPane.margin>
         </Button>
         <Button fx:id="loginButton" disable="true" mnemonicParsing="false" onAction="#onLoginButtonClick"
-                text="Log in" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                text="Log in" GridPane.columnIndex="1" GridPane.rowIndex="1" style="-fx-background-color: #0177fb;" textFill="WHITE">
             <GridPane.margin>
                 <Insets left="10.0" top="120.0"/>
             </GridPane.margin>
         </Button>
-        <Label text="Meme Team Medical" GridPane.columnIndex="1">
+        <Label text="Meme Team Medical"  textFill="WHITE" GridPane.columnIndex="1">
             <font>
                 <Font name="Arial Bold" size="21.0"/>
             </font>

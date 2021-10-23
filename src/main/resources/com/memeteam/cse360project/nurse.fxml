@@ -1,151 +1,156 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0"
-      prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.memeteam.cse360project.NurseController">
-   <MenuBar>
-      <Menu mnemonicParsing="false" text="File">
-         <MenuItem mnemonicParsing="false" onAction="#logOut" text="Log out"/>
-         <MenuItem mnemonicParsing="false" onAction="#exit" text="Exit Application"/>
-      </Menu>
-      <Menu mnemonicParsing="false" text="Help">
-         <MenuItem mnemonicParsing="false" onAction="#about" text="About"/>
-      </Menu>
-   </MenuBar>
-   <GridPane prefHeight="383.0" prefWidth="600.0">
-      <columnConstraints>
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-      </columnConstraints>
-      <rowConstraints>
-         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-      </rowConstraints>
-      <VBox.margin>
-         <Insets/>
-      </VBox.margin>
-      <MenuButton fx:id="userMenu" maxWidth="103.0" minWidth="103.0" mnemonicParsing="false" text="Select Patient">
-         <items>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="408.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.memeteam.cse360project.NurseController">
+   <children>
+      <MenuBar>
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#logOut" text="Log out" />
+                  <MenuItem mnemonicParsing="false" onAction="#exit" text="Exit Application" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#about" text="About" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <GridPane prefHeight="383.0" prefWidth="600.0" style="-fx-background-color: #262626;">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <children>
+            <MenuButton fx:id="userMenu" maxWidth="103.0" minWidth="103.0" mnemonicParsing="false" style="-fx-background-color: #2387fa; -fx-mark-color: white;" text="Select Patient" textFill="WHITE">
+               <items>
          </items>
-         <GridPane.margin>
-            <Insets left="30.0" top="30.0"/>
-         </GridPane.margin>
-      </MenuButton>
-      <Label text="Nurse Portal">
-         <font>
-            <Font name="Arial Black" size="18.0"/>
-         </font>
-         <GridPane.margin>
-            <Insets left="80.0" top="-70.0"/>
-         </GridPane.margin>
-      </Label>
-      <ImageView fitHeight="38.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
-         <GridPane.margin>
-            <Insets left="30.0" top="-70.0"/>
-         </GridPane.margin>
-         <Image url="@med.png"/>
-      </ImageView>
-      <Label text="Name: " GridPane.columnIndex="1">
-         <GridPane.margin>
-            <Insets left="30.0" top="30.0"/>
-         </GridPane.margin>
-      </Label>
-      <Label text="Age:" GridPane.columnIndex="1">
-         <GridPane.margin>
-            <Insets left="30.0" top="70.0"/>
-         </GridPane.margin>
-      </Label>
-      <Label fx:id="nameLabel" text="Lastname, Firstname" GridPane.columnIndex="1">
-         <GridPane.margin>
-            <Insets left="120.0" top="30.0"/>
-         </GridPane.margin>
-      </Label>
-      <Label fx:id="ageLabel" text="##" GridPane.columnIndex="1">
-         <GridPane.margin>
-            <Insets left="120.0" top="70.0"/>
-         </GridPane.margin>
-      </Label>
-      <Button fx:id="medicalButton" defaultButton="true" disable="true" mnemonicParsing="false"
-              onAction="#onMedicalButtonClick" text="Medical History">
-         <GridPane.margin>
-            <Insets left="150.0" top="30.0"/>
-         </GridPane.margin>
-      </Button>
-      <Button fx:id="messagesButton" disable="true" mnemonicParsing="false" onAction="#onMessageButtonClick"
-              text="Messages">
-         <GridPane.margin>
-            <Insets left="65.0" top="100.0"/>
-         </GridPane.margin>
-      </Button>
-      <Button fx:id="contactButton" disable="true" mnemonicParsing="false" onAction="#onContactButtonClick"
-              text="Contact">
-         <GridPane.margin>
-            <Insets left="150.0" top="100.0"/>
-         </GridPane.margin>
-      </Button>
-      <Label text="Known Allergies and Health Concerns:" GridPane.rowIndex="2">
-         <GridPane.margin>
-            <Insets left="30.0" top="-120.0"/>
-         </GridPane.margin>
-      </Label>
-      <TextArea fx:id="notesText" disable="true" maxHeight="60.0" minWidth="540.0" promptText="Notes.." GridPane.rowIndex="2">
-         <GridPane.margin>
-            <Insets left="30.0" top="-30.0"/>
-         </GridPane.margin>
-      </TextArea>
-      <Label text="Weight:" GridPane.rowIndex="1">
-         <opaqueInsets>
-            <Insets/>
-         </opaqueInsets>
-         <GridPane.margin>
-            <Insets left="30.0" top="-70.0"/>
-         </GridPane.margin>
-      </Label>
-      <Label text="Height:" GridPane.rowIndex="1">
-         <GridPane.margin>
-            <Insets left="30.0"/>
-         </GridPane.margin>
-      </Label>
-      <Label text="Temp:" GridPane.columnIndex="1" GridPane.rowIndex="1">
-         <GridPane.margin>
-            <Insets top="-70.0"/>
-         </GridPane.margin>
-      </Label>
-      <Label text="Blood Pressure:" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-      <TextField fx:id="weightField" maxWidth="75.0" promptText="XX lbs." GridPane.rowIndex="1">
-         <GridPane.margin>
-            <Insets left="100.0" top="-70.0"/>
-         </GridPane.margin>
-      </TextField>
-      <TextField fx:id="heightField" maxWidth="75.0" promptText="X' XX&quot;" GridPane.rowIndex="1">
-         <GridPane.margin>
-            <Insets left="100.0"/>
-         </GridPane.margin>
-      </TextField>
-      <TextField fx:id="bpField" maxWidth="75.0" promptText="XX / XXX" GridPane.columnIndex="1"
-                 GridPane.rowIndex="1">
-         <GridPane.margin>
-            <Insets left="100.0"/>
-         </GridPane.margin>
-      </TextField>
-      <TextField fx:id="tempField" maxWidth="75.0" promptText="XX° F" GridPane.columnIndex="1" GridPane.rowIndex="1">
-         <GridPane.margin>
-            <Insets left="100.0" top="-70.0"/>
-         </GridPane.margin>
-      </TextField>
-      <Button defaultButton="true" mnemonicParsing="false" text="Save Patient" GridPane.columnIndex="1"
-              GridPane.rowIndex="2"
-              onAction="#onSaveButtonClick" fx:id="saveButton">
-         <GridPane.margin>
-            <Insets left="-40.0" top="80.0"/>
-         </GridPane.margin>
-      </Button>
-   </GridPane>
+               <GridPane.margin>
+                  <Insets left="30.0" top="30.0" />
+               </GridPane.margin>
+            </MenuButton>
+            <Label text="Nurse Portal" textFill="WHITE">
+               <font>
+                  <Font name="Arial Black" size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="80.0" top="-70.0" />
+               </GridPane.margin>
+            </Label>
+            <ImageView fitHeight="38.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+               <GridPane.margin>
+                  <Insets left="30.0" top="-70.0" />
+               </GridPane.margin>
+               <image>
+                  <Image url="@med.png" />
+               </image>
+            </ImageView>
+            <Label text="Name: " textFill="WHITE" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets left="30.0" top="30.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Age:" textFill="WHITE" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets left="30.0" top="70.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="nameLabel" text="Lastname, Firstname" textFill="WHITE" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets left="120.0" top="30.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="ageLabel" text="##" textFill="WHITE" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets left="120.0" top="70.0" />
+               </GridPane.margin>
+            </Label>
+            <Button fx:id="medicalButton" defaultButton="true" disable="true" mnemonicParsing="false" onAction="#onMedicalButtonClick" style="-fx-background-color: #0177fb;" text="Medical History" textFill="WHITE">
+               <GridPane.margin>
+                  <Insets left="150.0" top="30.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="messagesButton" disable="true" mnemonicParsing="false" onAction="#onMessageButtonClick" style="-fx-background-color: #2387fa;" text="Messages" textFill="WHITE">
+               <GridPane.margin>
+                  <Insets left="65.0" top="100.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="contactButton" disable="true" mnemonicParsing="false" onAction="#onContactButtonClick" style="-fx-background-color: #2387fa;" text="Contact" textFill="WHITE">
+               <GridPane.margin>
+                  <Insets left="150.0" top="100.0" />
+               </GridPane.margin>
+            </Button>
+            <Label text="Known Allergies and Health Concerns:" textFill="WHITE" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="30.0" top="-120.0" />
+               </GridPane.margin>
+            </Label>
+            <TextArea fx:id="notesText" disable="true" maxHeight="60.0" minWidth="540.0" promptText="Notes.." style="-fx-control-inner-background: #1d1d1d; -fx-text-fill: white; -fx-prompt-text-fill: #989898;" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="30.0" top="-30.0" />
+               </GridPane.margin>
+            </TextArea>
+            <Label text="Weight:" textFill="WHITE" GridPane.rowIndex="1">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets left="30.0" top="-70.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Height:" textFill="WHITE" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Temp:" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets top="-70.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Blood Pressure:" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="weightField" maxWidth="75.0" promptText="XX lbs." style="-fx-background-color: #1d1d1d; -fx-text-fill: white;" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="100.0" top="-70.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="heightField" maxWidth="75.0" promptText="X' XX&quot;" style="-fx-background-color: #1d1d1d; -fx-text-fill: white;" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="100.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="bpField" maxWidth="75.0" promptText="XX / XXX" style="-fx-background-color: #1d1d1d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="100.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="tempField" maxWidth="75.0" promptText="XX° F" style="-fx-background-color: #1d1d1d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="100.0" top="-70.0" />
+               </GridPane.margin>
+            </TextField>
+            <Button fx:id="saveButton" defaultButton="true" mnemonicParsing="false" onAction="#onSaveButtonClick" style="-fx-background-color: #0177fb;" textFill="WHITE" text="Save Patient"  GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="-40.0" top="80.0" />
+               </GridPane.margin>
+            </Button>
+         </children>
+      </GridPane>
+   </children>
 </VBox>

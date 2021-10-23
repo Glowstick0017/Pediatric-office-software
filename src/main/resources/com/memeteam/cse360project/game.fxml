@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.Shadow?>
@@ -8,110 +12,111 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.*?>
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0"
-      prefWidth="571.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.memeteam.cse360project.GameController">
-   <GridPane prefHeight="377.0" prefWidth="600.0">
-      <columnConstraints>
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-      </columnConstraints>
-      <rowConstraints>
-         <RowConstraints maxHeight="185.0" minHeight="10.0" prefHeight="185.0" vgrow="SOMETIMES"/>
-         <RowConstraints maxHeight="170.0" minHeight="10.0" prefHeight="165.0" vgrow="SOMETIMES"/>
-      </rowConstraints>
-      <ImageView fitHeight="86.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
-         <GridPane.margin>
-            <Insets bottom="-50.0" left="100.0"/>
-         </GridPane.margin>
-         <Image url="@med.png"/>
-      </ImageView>
-      <Circle fill="#ffffff00" onMouseClicked="#onWheelchairClick" radius="70.0" stroke="BLACK" strokeType="INSIDE">
-         <effect>
-            <Shadow/>
-         </effect>
-         <GridPane.margin>
-            <Insets bottom="-50.0" left="70.0"/>
-         </GridPane.margin>
-      </Circle>
-      <Label text="Accidents:" GridPane.rowIndex="1">
-         <GridPane.margin>
-            <Insets bottom="90.0" left="85.0"/>
-         </GridPane.margin>
-         <font>
-            <Font name="System Bold" size="17.0"/>
-         </font>
-      </Label>
-      <Label fx:id="accidentCount" text="0" GridPane.rowIndex="1">
-         <GridPane.margin>
-            <Insets bottom="88.0" left="180.0"/>
-         </GridPane.margin>
-         <font>
-            <Font name="System Bold" size="18.0"/>
-         </font>
-      </Label>
-      <Label fx:id="tylenolLabel" text="Tylenol" visible="false" GridPane.columnIndex="1">
-         <GridPane.margin>
-            <Insets bottom="80.0" left="60.0"/>
-         </GridPane.margin>
-         <font>
-            <Font size="17.0"/>
-         </font>
-      </Label>
-      <Button fx:id="tylenolButton" mnemonicParsing="false" onAction="#onTylenolBuy" text="Buy $10" visible="false"
-              GridPane.columnIndex="1">
-         <GridPane.margin>
-            <Insets bottom="80.0" left="125.0"/>
-         </GridPane.margin>
-      </Button>
-      <Label fx:id="tylenolCount" text="x0" visible="false" GridPane.columnIndex="1">
-         <GridPane.margin>
-            <Insets bottom="80.0" left="210.0"/>
-         </GridPane.margin>
-      </Label>
-      <Label text="x0" visible="false" GridPane.columnIndex="1" fx:id="xanaxcount">
-         <GridPane.margin>
-            <Insets bottom="-10.0" left="210.0"/>
-         </GridPane.margin>
-      </Label>
-      <Button mnemonicParsing="false" onAction="#onXanaxBuy" text="Buy $100" visible="false" GridPane.columnIndex="1"
-              fx:id="xanaxbutton">
-         <GridPane.margin>
-            <Insets bottom="-10.0" left="125.0"/>
-         </GridPane.margin>
-      </Button>
-      <Label text="Xanax" visible="false" GridPane.columnIndex="1" fx:id="xanaxlabel">
-         <font>
-            <Font size="17.0"/>
-         </font>
-         <GridPane.margin>
-            <Insets bottom="-10.0" left="60.0"/>
-         </GridPane.margin>
-      </Label>
-      <Label fx:id="methlabel" maxWidth="100.0" text="Medical Meth" visible="false" wrapText="true"
-             GridPane.columnIndex="1">
-         <font>
-            <Font size="17.0"/>
-         </font>
-         <GridPane.margin>
-            <Insets bottom="-100.0" left="60.0"/>
-         </GridPane.margin>
-      </Label>
-      <Button fx:id="methbutton" mnemonicParsing="false" onAction="#onMethBuy" text="Buy $1000" visible="false"
-              GridPane.columnIndex="1">
-         <GridPane.margin>
-            <Insets bottom="-100.0" left="125.0"/>
-         </GridPane.margin>
-      </Button>
-      <Label fx:id="methcount" text="x0" visible="false" GridPane.columnIndex="1">
-         <GridPane.margin>
-            <Insets bottom="-100.0" left="210.0"/>
-         </GridPane.margin>
-      </Label>
-      <Label fx:id="cpslabel" text="CPS: 0" visible="false" GridPane.rowIndex="1">
-         <GridPane.margin>
-            <Insets bottom="20.0" left="120.0"/>
-         </GridPane.margin>
-      </Label>
-   </GridPane>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="571.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.memeteam.cse360project.GameController">
+   <children>
+      <GridPane prefHeight="377.0" prefWidth="600.0" style="-fx-background-color: #262626;">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="185.0" minHeight="10.0" prefHeight="185.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="170.0" minHeight="10.0" prefHeight="165.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <ImageView fitHeight="86.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
+               <GridPane.margin>
+                  <Insets bottom="-50.0" left="100.0" />
+               </GridPane.margin>
+               <image>
+                  <Image url="@med.png" />
+               </image>
+            </ImageView>
+            <Circle fill="#ffffff00" onMouseClicked="#onWheelchairClick" radius="70.0" stroke="BLACK" strokeType="INSIDE">
+               <effect>
+                  <Shadow />
+               </effect>
+               <GridPane.margin>
+                  <Insets bottom="-50.0" left="70.0" />
+               </GridPane.margin>
+            </Circle>
+            <Label text="Accidents:" textFill="WHITE" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="90.0" left="85.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="accidentCount" text="0" textFill="WHITE" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="88.0" left="180.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="tylenolLabel" text="Tylenol" textFill="WHITE" visible="false" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="80.0" left="60.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Button fx:id="tylenolButton" mnemonicParsing="false" onAction="#onTylenolBuy" style="-fx-background-color: #0177fb;" text="Buy $10" textFill="WHITE" visible="false" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="80.0" left="125.0" />
+               </GridPane.margin>
+            </Button>
+            <Label fx:id="tylenolCount" text="x0" textFill="WHITE" visible="false" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="80.0" left="210.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="x0" textFill="WHITE" visible="false" GridPane.columnIndex="1" fx:id="xanaxcount">
+               <GridPane.margin>
+                  <Insets bottom="-10.0" left="210.0" />
+               </GridPane.margin>
+            </Label>
+            <Button mnemonicParsing="false" onAction="#onXanaxBuy" style="-fx-background-color: #0177fb;" text="Buy $100" textFill="WHITE" visible="false" GridPane.columnIndex="1" fx:id="xanaxbutton">
+               <GridPane.margin>
+                  <Insets bottom="-10.0" left="125.0" />
+               </GridPane.margin>
+            </Button>
+            <Label text="Xanax" textFill="WHITE" visible="false" GridPane.columnIndex="1" fx:id="xanaxlabel">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="-10.0" left="60.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="methlabel" maxWidth="100.0" text="Medical Meth" textFill="WHITE" visible="false" wrapText="true" GridPane.columnIndex="1">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="-100.0" left="60.0" />
+               </GridPane.margin>
+            </Label>
+            <Button fx:id="methbutton" mnemonicParsing="false" onAction="#onMethBuy" style="-fx-background-color: #0177fb;" text="Buy $1000" textFill="WHITE" visible="false" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="-100.0" left="125.0" />
+               </GridPane.margin>
+            </Button>
+            <Label fx:id="methcount" text="x0" textFill="WHITE" visible="false" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="-100.0" left="210.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="cpslabel" text="CPS: 0" textFill="WHITE" visible="false" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="20.0" left="120.0" />
+               </GridPane.margin>
+            </Label>
+         </children>
+      </GridPane>
+   </children>
 </VBox>

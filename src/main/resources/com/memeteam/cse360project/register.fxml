@@ -1,130 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0"
-      prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.memeteam.cse360project.RegisterController">
-    <MenuBar>
-        <Menu mnemonicParsing="false" text="File">
-            <MenuItem mnemonicParsing="false" onAction="#exit" text="Exit Application"/>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Help">
-            <MenuItem mnemonicParsing="false" onAction="#about" text="About"/>
-        </Menu>
-    </MenuBar>
-    <GridPane prefHeight="377.0" prefWidth="600.0">
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-        </rowConstraints>
-        <Label text="Patient Register" GridPane.columnIndex="1">
-            <font>
-                <Font name="Arial Bold" size="16.0"/>
-            </font>
-            <GridPane.margin>
-                <Insets left="-30.0" top="-30.0"/>
-            </GridPane.margin>
-        </Label>
-        <Label text="First Name:" GridPane.columnIndex="1" GridPane.rowIndex="1">
-            <GridPane.margin>
-                <Insets left="-110.0" top="-160.0"/>
-            </GridPane.margin>
-        </Label>
-        <Label layoutX="200.0" layoutY="120.0" text="Last Name:" GridPane.columnIndex="1" GridPane.rowIndex="1">
-            <GridPane.margin>
-                <Insets left="-110.0" top="-80.0"/>
-            </GridPane.margin>
-        </Label>
-        <TextField fx:id="firstnameField" maxWidth="130.0" onKeyPressed="#onInputChange" promptText="first name.."
-                   GridPane.columnIndex="1" GridPane.rowIndex="1">
-            <GridPane.margin>
-                <Insets left="-20.0" top="-160.0"/>
-            </GridPane.margin>
-        </TextField>
-        <TextField fx:id="lastnameField" maxWidth="130.0" onKeyPressed="#onInputChange" promptText="last name.."
-                   GridPane.columnIndex="1" GridPane.rowIndex="1">
-            <GridPane.margin>
-                <Insets left="-20.0" top="-80.0"/>
-            </GridPane.margin>
-        </TextField>
-        <Label layoutX="200.0" layoutY="120.0" text="Date of Birth:" GridPane.columnIndex="1" GridPane.rowIndex="1">
-            <GridPane.margin>
-                <Insets left="-110.0" top="0.0"/>
-            </GridPane.margin>
-        </Label>
-        <DatePicker fx:id="dateField" maxWidth="130.0" promptText="MM/DD/YYYY" GridPane.columnIndex="1"
-                    GridPane.rowIndex="1">
-            <GridPane.margin>
-                <Insets left="-20.0"/>
-            </GridPane.margin>
-        </DatePicker>
-        <Label text="Username:" GridPane.columnIndex="1" GridPane.rowIndex="1">
-            <GridPane.margin>
-                <Insets left="-110.0" top="80.0"/>
-            </GridPane.margin>
-        </Label>
-        <Label text="Password:" GridPane.columnIndex="1" GridPane.rowIndex="1">
-            <GridPane.margin>
-                <Insets left="-110.0" top="160.0"/>
-            </GridPane.margin>
-        </Label>
-        <TextField fx:id="usernameField" maxWidth="130.0" onKeyPressed="#onInputChange" promptText="username.."
-                   GridPane.columnIndex="1" GridPane.rowIndex="1">
-            <GridPane.margin>
-                <Insets left="-20.0" top="80.0"/>
-            </GridPane.margin>
-        </TextField>
-        <TextField fx:id="passwordField" maxWidth="130.0" onKeyPressed="#onInputChange" promptText="password.."
-                   GridPane.columnIndex="1" GridPane.rowIndex="1">
-            <GridPane.margin>
-                <Insets left="-20.0" top="160.0"/>
-            </GridPane.margin>
-        </TextField>
-        <Button fx:id="registerButton" disable="true" maxWidth="100.0" mnemonicParsing="false"
-                onAction="#onRegisterButtonClick" text="Register" GridPane.columnIndex="1" GridPane.rowIndex="2">
-            <GridPane.margin>
-                <Insets left="-50.0" top="100.0"/>
-            </GridPane.margin>
-        </Button>
-        <ImageView fitHeight="70.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true"
-                   GridPane.columnIndex="1">
-            <GridPane.margin>
-                <Insets left="-110.0" top="-30.0"/>
-            </GridPane.margin>
-            <Image url="@med.png"/>
-        </ImageView>
-        <Button defaultButton="true" maxWidth="100.0" mnemonicParsing="false" onAction="#onMedicalButtonClick"
-                text="Medical History" GridPane.columnIndex="1" GridPane.rowIndex="2">
-            <GridPane.margin>
-                <Insets left="-100.0" top="10.0"/>
-            </GridPane.margin>
-        </Button>
-        <Button defaultButton="true" mnemonicParsing="false" onAction="#onContactButtonClick" text="Contact Info"
-                GridPane.columnIndex="1" GridPane.rowIndex="2">
-            <GridPane.margin>
-                <Insets left="20.0" top="10.0"/>
-            </GridPane.margin>
-        </Button>
-        <Label text="Username already exists" textFill="RED" visible="false" GridPane.columnIndex="1"
-               GridPane.rowIndex="1" fx:id="existsLabel">
-            <GridPane.margin>
-                <Insets left="120.0" top="80.0"/>
-            </GridPane.margin>
-        </Label>
-    </GridPane>
-    <Label onMouseClicked="#onLoginTextClick" text="Already have an account? Click here to log in" underline="true">
-        <VBox.margin>
-            <Insets left="180.0" top="10.0"/>
-        </VBox.margin>
-    </Label>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: #262626;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.memeteam.cse360project.RegisterController">
+   <children>
+       <MenuBar>
+          <menus>
+              <Menu mnemonicParsing="false" text="File">
+                 <items>
+                     <MenuItem mnemonicParsing="false" onAction="#exit" text="Exit Application" />
+                 </items>
+              </Menu>
+              <Menu mnemonicParsing="false" text="Help">
+                 <items>
+                     <MenuItem mnemonicParsing="false" onAction="#about" text="About" />
+                 </items>
+              </Menu>
+          </menus>
+       </MenuBar>
+       <GridPane prefHeight="377.0" prefWidth="600.0">
+           <columnConstraints>
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+           </columnConstraints>
+           <rowConstraints>
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+           </rowConstraints>
+          <children>
+              <Label text="Patient Register" textFill="WHITE" GridPane.columnIndex="1">
+                  <font>
+                      <Font name="Arial Bold" size="16.0" />
+                  </font>
+                  <GridPane.margin>
+                      <Insets left="-30.0" top="-30.0" />
+                  </GridPane.margin>
+              </Label>
+              <Label text="First Name:" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <GridPane.margin>
+                      <Insets left="-110.0" top="-160.0" />
+                  </GridPane.margin>
+              </Label>
+              <Label layoutX="200.0" layoutY="120.0" text="Last Name:" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <GridPane.margin>
+                      <Insets left="-110.0" top="-80.0" />
+                  </GridPane.margin>
+              </Label>
+              <TextField fx:id="firstnameField" maxWidth="130.0" onKeyPressed="#onInputChange" promptText="first name.." style="-fx-background-color: #1d1d1d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <GridPane.margin>
+                      <Insets left="-20.0" top="-160.0" />
+                  </GridPane.margin>
+              </TextField>
+              <TextField fx:id="lastnameField" maxWidth="130.0" onKeyPressed="#onInputChange" promptText="last name.." style="-fx-background-color: #1d1d1d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <GridPane.margin>
+                      <Insets left="-20.0" top="-80.0" />
+                  </GridPane.margin>
+              </TextField>
+              <Label layoutX="200.0" layoutY="120.0" text="Date of Birth:" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <GridPane.margin>
+                      <Insets left="-110.0" top="0.0" />
+                  </GridPane.margin>
+              </Label>
+              <DatePicker fx:id="dateField" maxWidth="130.0" promptText="MM/DD/YYYY" style="-fx-text-fill: white; -fx-control-inner-background: #1d1d1d; -fx-control-inner-text-fill: green; -fx-background-color: #1d1d1d;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <GridPane.margin>
+                      <Insets left="-20.0" />
+                  </GridPane.margin>
+              </DatePicker>
+              <Label text="Username:" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <GridPane.margin>
+                      <Insets left="-110.0" top="80.0" />
+                  </GridPane.margin>
+              </Label>
+              <Label text="Password:" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <GridPane.margin>
+                      <Insets left="-110.0" top="160.0" />
+                  </GridPane.margin>
+              </Label>
+              <TextField fx:id="usernameField" maxWidth="130.0" onKeyPressed="#onInputChange" promptText="username.." style="-fx-background-color: #1d1d1d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <GridPane.margin>
+                      <Insets left="-20.0" top="80.0" />
+                  </GridPane.margin>
+              </TextField>
+              <TextField fx:id="passwordField" maxWidth="130.0" onKeyPressed="#onInputChange" promptText="password.." style="-fx-background-color: #1d1d1d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <GridPane.margin>
+                      <Insets left="-20.0" top="160.0" />
+                  </GridPane.margin>
+              </TextField>
+              <Button fx:id="registerButton" disable="true" maxWidth="100.0" mnemonicParsing="false" onAction="#onRegisterButtonClick" style="-fx-background-color: #2387fa;" text="Register" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <GridPane.margin>
+                      <Insets left="-50.0" top="100.0" />
+                  </GridPane.margin>
+              </Button>
+              <ImageView fitHeight="70.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                  <GridPane.margin>
+                      <Insets left="-110.0" top="-30.0" />
+                  </GridPane.margin>
+                 <image>
+                     <Image url="@med.png" />
+                 </image>
+              </ImageView>
+              <Button defaultButton="true" maxWidth="100.0" mnemonicParsing="false" onAction="#onMedicalButtonClick" style="-fx-background-color: #0177fb;" text="Medical History" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <GridPane.margin>
+                      <Insets left="-100.0" top="10.0" />
+                  </GridPane.margin>
+              </Button>
+              <Button defaultButton="true" mnemonicParsing="false" onAction="#onContactButtonClick" style="-fx-background-color: #0177fb;" text="Contact Info" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <GridPane.margin>
+                      <Insets left="20.0" top="10.0" />
+                  </GridPane.margin>
+              </Button>
+              <Label fx:id="existsLabel" text="Username already exists" textFill="RED" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <GridPane.margin>
+                      <Insets left="120.0" top="80.0" />
+                  </GridPane.margin>
+              </Label>
+          </children>
+       </GridPane>
+       <Label onMouseClicked="#onLoginTextClick" text="Already have an account? Click here to log in" textFill="WHITE" underline="true">
+           <VBox.margin>
+               <Insets left="180.0" top="10.0" />
+           </VBox.margin>
+       </Label>
+   </children>
 </VBox>

@@ -1,176 +1,152 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="612.0"
-      prefWidth="515.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.memeteam.cse360project.MedicalController">
-   <GridPane prefHeight="612.0" prefWidth="514.0">
-      <columnConstraints>
-         <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="253.0"/>
-         <ColumnConstraints hgrow="SOMETIMES" maxWidth="323.0" minWidth="10.0" prefWidth="262.0"/>
-      </columnConstraints>
-      <rowConstraints>
-         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-         <RowConstraints maxHeight="171.0" minHeight="10.0" prefHeight="122.0" vgrow="SOMETIMES"/>
-         <RowConstraints maxHeight="276.0" minHeight="10.0" prefHeight="276.0" vgrow="SOMETIMES"/>
-      </rowConstraints>
-      <ImageView fitHeight="38.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
-         <GridPane.margin>
-            <Insets left="30.0" top="-70.0"/>
-         </GridPane.margin>
-         <Image url="@med.png"/>
-      </ImageView>
-      <Label text="Medical History">
-         <font>
-            <Font name="Arial Black" size="18.0"/>
-         </font>
-         <GridPane.margin>
-            <Insets left="80.0" top="-70.0"/>
-         </GridPane.margin>
-      </Label>
-      <RadioButton maxHeight="40.0" maxWidth="200.0" mnemonicParsing="false"
-                   text="Acquired Respiratory Distress Syndrome" wrapText="true" GridPane.rowIndex="1"
-                   onAction="#onMedAddClick" fx:id="ardsRadio">
-         <GridPane.margin>
-            <Insets left="30.0" top="-230.0"/>
-         </GridPane.margin>
-      </RadioButton>
-      <RadioButton maxHeight="40.0" maxWidth="200.0" mnemonicParsing="false" text="Angina" wrapText="true"
-                   GridPane.rowIndex="1" onAction="#onMedAddClick" fx:id="anginaRadio">
-         <GridPane.margin>
-            <Insets left="30.0" top="-150.0"/>
-         </GridPane.margin>
-      </RadioButton>
-      <RadioButton maxHeight="40.0" maxWidth="200.0" mnemonicParsing="false" text="Anxiety or Panic Discorders"
-                   wrapText="true" GridPane.rowIndex="1" onAction="#onMedAddClick" fx:id="anxietyRadio">
-         <GridPane.margin>
-            <Insets left="30.0" top="-80.0"/>
-         </GridPane.margin>
-      </RadioButton>
-      <RadioButton maxHeight="40.0" maxWidth="200.0" mnemonicParsing="false" text="Arthritis (RA, OA)"
-                   wrapText="true" GridPane.rowIndex="1" onAction="#onMedAddClick" fx:id="arthritisRadio">
-         <GridPane.margin>
-            <Insets left="30.0"/>
-         </GridPane.margin>
-      </RadioButton>
-      <RadioButton maxHeight="40.0" maxWidth="200.0" mnemonicParsing="false" text="Asthma" wrapText="true"
-                   GridPane.rowIndex="1" onAction="#onMedAddClick" fx:id="asthmaRadio">
-         <GridPane.margin>
-            <Insets left="30.0" top="80.0"/>
-         </GridPane.margin>
-      </RadioButton>
-      <RadioButton maxHeight="43.0" maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" prefHeight="43.0"
-                   prefWidth="200.0" text="Chronic Obstructive Pulmonary Disease (COPD)" wrapText="true"
-                   GridPane.rowIndex="1" onAction="#onMedAddClick" fx:id="copdRadio">
-         <GridPane.margin>
-            <Insets left="30.0" top="150.0"/>
-         </GridPane.margin>
-      </RadioButton>
-      <RadioButton maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" text="Congestive Heart Failure (CHF)"
-                   wrapText="true" GridPane.rowIndex="1" onAction="#onMedAddClick" fx:id="chfRadio">
-         <GridPane.margin>
-            <Insets left="30.0" top="230.0"/>
-         </GridPane.margin>
-      </RadioButton>
-      <RadioButton maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" text="Degenerative Disc Disease"
-                   wrapText="true" GridPane.rowIndex="1" onAction="#onMedAddClick" fx:id="dddRadio">
-         <GridPane.margin>
-            <Insets left="30.0" top="310.0"/>
-         </GridPane.margin>
-      </RadioButton>
-      <RadioButton maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" text="Depression" wrapText="true"
-                   GridPane.rowIndex="1" onAction="#onMedAddClick" fx:id="depressionRadio">
-         <GridPane.margin>
-            <Insets left="30.0" top="390.0"/>
-         </GridPane.margin>
-      </RadioButton>
-      <RadioButton maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" text="Diabetes" wrapText="true"
-                   GridPane.rowIndex="1" onAction="#onMedAddClick" fx:id="diabetesRadio">
-         <GridPane.margin>
-            <Insets left="30.0" top="470.0"/>
-         </GridPane.margin>
-      </RadioButton>
-      <RadioButton maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" text="Emphysema" wrapText="true"
-                   GridPane.columnIndex="1" GridPane.rowIndex="1" onAction="#onMedAddClick" fx:id="emphysemaRadio">
-         <GridPane.margin>
-            <Insets left="30.0" top="-230.0"/>
-         </GridPane.margin>
-      </RadioButton>
-      <RadioButton maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" text="Hearing Impairment"
-                   wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" onAction="#onMedAddClick"
-                   fx:id="hearingRadio">
-         <GridPane.margin>
-            <Insets left="30.0" top="-150.0"/>
-         </GridPane.margin>
-      </RadioButton>
-      <RadioButton maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" text="Heart Attack" wrapText="true"
-                   GridPane.columnIndex="1" GridPane.rowIndex="1" onAction="#onMedAddClick" fx:id="heartRadio">
-         <GridPane.margin>
-            <Insets left="30.0" top="-80.0"/>
-         </GridPane.margin>
-      </RadioButton>
-      <RadioButton maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" text="Multiple Sclerosis"
-                   wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" onAction="#onMedAddClick"
-                   fx:id="msRadio">
-         <GridPane.margin>
-            <Insets left="30.0"/>
-         </GridPane.margin>
-      </RadioButton>
-      <RadioButton maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" text="Osteoporosis" wrapText="true"
-                   GridPane.columnIndex="1" GridPane.rowIndex="1" onAction="#onMedAddClick" fx:id="osteoRadio">
-         <GridPane.margin>
-            <Insets left="30.0" top="80.0"/>
-         </GridPane.margin>
-      </RadioButton>
-      <RadioButton maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" text="Parkinson's Disease"
-                   wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" onAction="#onMedAddClick" fx:id="pdRadio">
-         <GridPane.margin>
-            <Insets left="30.0" top="150.0"/>
-         </GridPane.margin>
-      </RadioButton>
-      <RadioButton maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" text="Peripheral Vascular disease"
-                   wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" onAction="#onMedAddClick" fx:id="pvdRadio">
-         <GridPane.margin>
-            <Insets left="30.0" top="230.0"/>
-         </GridPane.margin>
-      </RadioButton>
-      <RadioButton maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" text="Stroke or TIA" wrapText="true"
-                   GridPane.columnIndex="1" GridPane.rowIndex="1" onAction="#onMedAddClick" fx:id="strokeRadio">
-         <GridPane.margin>
-            <Insets left="30.0" top="310.0"/>
-         </GridPane.margin>
-      </RadioButton>
-      <RadioButton maxWidth="200.0" minHeight="40.0" mnemonicParsing="false"
-                   text="Upper Gastrointestinal Disease (ulcer, hernia, reflux)" wrapText="true"
-                   GridPane.columnIndex="1" GridPane.rowIndex="1" onAction="#onMedAddClick" fx:id="ugdRadio">
-         <GridPane.margin>
-            <Insets left="30.0" top="390.0"/>
-         </GridPane.margin>
-      </RadioButton>
-      <RadioButton maxWidth="200.0" minHeight="40.0" mnemonicParsing="false"
-                   text="Visual Impairment (cataracts, glaucoma)" wrapText="true" GridPane.columnIndex="1"
-                   GridPane.rowIndex="1" onAction="#onMedAddClick" fx:id="viRadio">
-         <GridPane.margin>
-            <Insets left="30.0" top="470.0"/>
-         </GridPane.margin>
-      </RadioButton>
-      <CheckBox mnemonicParsing="false" text="Up to date on Vaccination" GridPane.rowIndex="2"
-                onAction="#onMedAddClick" fx:id="vaxxRadio">
-         <GridPane.margin>
-            <Insets left="60.0" top="150.0"/>
-         </GridPane.margin>
-      </CheckBox>
-      <Button defaultButton="true" mnemonicParsing="false" text="Submit" GridPane.columnIndex="1"
-              onAction="#onSubmitButtonClick" GridPane.rowIndex="2" fx:id="submitButton">
-         <GridPane.margin>
-            <Insets left="10.0" top="150.0"/>
-         </GridPane.margin>
-      </Button>
-   </GridPane>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="612.0" prefWidth="515.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.memeteam.cse360project.MedicalController">
+   <children>
+      <GridPane prefHeight="612.0" prefWidth="514.0" style="-fx-background-color: #292929;">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="253.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="323.0" minWidth="10.0" prefWidth="262.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="171.0" minHeight="10.0" prefHeight="122.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="276.0" minHeight="10.0" prefHeight="276.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <ImageView fitHeight="38.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+               <GridPane.margin>
+                  <Insets left="30.0" top="-70.0" />
+               </GridPane.margin>
+               <image>
+                  <Image url="@med.png" />
+               </image>
+            </ImageView>
+            <Label text="Medical History" textFill="WHITE">
+               <font>
+                  <Font name="Arial Black" size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="80.0" top="-70.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton fx:id="ardsRadio" maxHeight="40.0" maxWidth="200.0" mnemonicParsing="false" onAction="#onMedAddClick" text="Acquired Respiratory Distress Syndrome" textFill="WHITE" wrapText="true" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="30.0" top="-230.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton fx:id="anginaRadio" maxHeight="40.0" maxWidth="200.0" mnemonicParsing="false" onAction="#onMedAddClick" text="Angina" textFill="WHITE" wrapText="true" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="30.0" top="-150.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton fx:id="anxietyRadio" maxHeight="40.0" maxWidth="200.0" mnemonicParsing="false" onAction="#onMedAddClick" text="Anxiety or Panic Discorders" textFill="WHITE" wrapText="true" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="30.0" top="-80.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton fx:id="arthritisRadio" maxHeight="40.0" maxWidth="200.0" mnemonicParsing="false" onAction="#onMedAddClick" text="Arthritis (RA, OA)" textFill="WHITE" wrapText="true" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton fx:id="asthmaRadio" maxHeight="40.0" maxWidth="200.0" mnemonicParsing="false" onAction="#onMedAddClick" text="Asthma" textFill="WHITE" wrapText="true" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="30.0" top="80.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton fx:id="copdRadio" maxHeight="43.0" maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" onAction="#onMedAddClick" prefHeight="43.0" prefWidth="200.0" text="Chronic Obstructive Pulmonary Disease (COPD)" textFill="WHITE" wrapText="true" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="30.0" top="150.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton fx:id="chfRadio" maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" onAction="#onMedAddClick" text="Congestive Heart Failure (CHF)" textFill="WHITE" wrapText="true" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="30.0" top="230.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton fx:id="dddRadio" maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" onAction="#onMedAddClick" text="Degenerative Disc Disease" textFill="WHITE" wrapText="true" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="30.0" top="310.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton fx:id="depressionRadio" maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" onAction="#onMedAddClick" text="Depression" textFill="WHITE" wrapText="true" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="30.0" top="390.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton fx:id="diabetesRadio" maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" onAction="#onMedAddClick" text="Diabetes" textFill="WHITE" wrapText="true" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="30.0" top="470.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton fx:id="emphysemaRadio" maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" onAction="#onMedAddClick" text="Emphysema" textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="30.0" top="-230.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton fx:id="hearingRadio" maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" onAction="#onMedAddClick" text="Hearing Impairment" textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="30.0" top="-150.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton fx:id="heartRadio" maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" onAction="#onMedAddClick" text="Heart Attack" textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="30.0" top="-80.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton fx:id="msRadio" maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" onAction="#onMedAddClick" text="Multiple Sclerosis" textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton fx:id="osteoRadio" maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" onAction="#onMedAddClick" text="Osteoporosis" textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="30.0" top="80.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton fx:id="pdRadio" maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" onAction="#onMedAddClick" text="Parkinson's Disease" textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="30.0" top="150.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton fx:id="pvdRadio" maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" onAction="#onMedAddClick" text="Peripheral Vascular disease" textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="30.0" top="230.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton fx:id="strokeRadio" maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" onAction="#onMedAddClick" text="Stroke or TIA" textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="30.0" top="310.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton fx:id="ugdRadio" maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" onAction="#onMedAddClick" text="Upper Gastrointestinal Disease (ulcer, hernia, reflux)" textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="30.0" top="390.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton fx:id="viRadio" maxWidth="200.0" minHeight="40.0" mnemonicParsing="false" onAction="#onMedAddClick" text="Visual Impairment (cataracts, glaucoma)" textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="30.0" top="470.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <CheckBox fx:id="vaxxRadio" mnemonicParsing="false" onAction="#onMedAddClick" text="Up to date on Vaccination" textFill="WHITE" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="60.0" top="150.0" />
+               </GridPane.margin>
+            </CheckBox>
+            <Button fx:id="submitButton" defaultButton="true" mnemonicParsing="false" onAction="#onSubmitButtonClick" style="-fx-background-color: #0177fb;" text="Submit" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="10.0" top="150.0" />
+               </GridPane.margin>
+            </Button>
+         </children>
+      </GridPane>
+   </children>
 </VBox>
