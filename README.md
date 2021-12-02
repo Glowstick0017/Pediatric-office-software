@@ -1,6 +1,6 @@
-# CSE 360 Project
+# Office Automation System for Pediatric Doctor’s Office
 
-Office Automation System for Pediatric Doctor’s Office
+
 
 Doctor and Nurse credentials are given, user can be registered.
 
